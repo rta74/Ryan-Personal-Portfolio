@@ -59,13 +59,45 @@ const revealObserver = new IntersectionObserver(
 );
 revealEls.forEach((el) => revealObserver.observe(el));
 
-// ---------- Lottie hero animation ----------
+// ---------- Lottie hero animation, scrubbed by scroll ----------
 if (window.lottie) {
-  lottie.loadAnimation({
+  const heroTrack = document.getElementById('hero');
+  const heroAnim = lottie.loadAnimation({
     container: document.getElementById('hero-lottie'),
     renderer: 'svg',
     loop: false,
-    autoplay: true,
+    autoplay: false,
     path: 'assets/lottie/portfolio-intro.json',
   });
+
+  let totalFrames = 0;
+  let ticking = false;
+
+  heroAnim.addEventListener('DOMLoaded', () => {
+    totalFrames = heroAnim.totalFrames;
+    heroAnim.goToAndStop(0, true);
+    updateFrame();
+  });
+
+  function updateFrame() {
+    if (!totalFrames || !heroTrack) return;
+    const rect = heroTrack.getBoundingClientRect();
+    const scrollable = rect.height - window.innerHeight;
+    const progress = scrollable > 0 ? Math.min(Math.max(-rect.top / scrollable, 0), 1) : 0;
+    const frame = progress * (totalFrames - 1);
+    heroAnim.goToAndStop(frame, true);
+    ticking = false;
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(updateFrame);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+  window.addEventListener('resize', updateFrame);
 }
