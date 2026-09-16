@@ -180,7 +180,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: flex-end;
   text-align: center;
-  padding: 6rem var(--pad) 3rem;
+  padding: 6rem var(--pad) 6.5rem;
   overflow: hidden;
 }
 .hero-lottie-wrap {
@@ -409,6 +409,12 @@ img { max-width: 100%; display: block; }
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 24px 40px -20px rgba(28,26,21,0.25);
+}
+/* Dometic entry in Experience reuses the project-card look, sized down
+   to one grid-column width so it doesn't dwarf the timeline below it. */
+.experience-feature {
+  max-width: 620px;
+  margin: 0 0 3.5rem;
 }
 .placeholder-media {
   aspect-ratio: 16 / 9;
