@@ -68,6 +68,10 @@ if (window.lottie) {
     loop: false,
     autoplay: false,
     path: 'assets/lottie/portfolio-intro.json',
+    rendererSettings: {
+      // fill the full hero viewport, cropping overflow instead of letterboxing
+      preserveAspectRatio: 'xMidYMid slice',
+    },
   });
 
   let totalFrames = 0;
