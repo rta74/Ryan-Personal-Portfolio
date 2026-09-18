@@ -354,6 +354,30 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   font-size: 1.1rem;
 }
+.course-list {
+  margin: .4rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .35rem;
+}
+.course-list li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.course-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
 
 /* ---------- Experience / timeline ---------- */
 .timeline {
