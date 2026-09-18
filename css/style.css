@@ -3,9 +3,10 @@
   --cream: #abb290;
   --cream-rgb: 171, 178, 144;
   --cream-2: #a1a787;
-  --ink: #1c1a15;
-  --ink-soft: #4a4535;
-  --line: rgba(28, 26, 21, 0.14);
+  --ink: #1b1f15;
+  --ink-rgb: 27, 31, 21;
+  --ink-soft: #333c29;
+  --line: rgba(27, 31, 21, 0.32);
   --accent: #d95c34;
   --accent-2: #35502f;
   --radius: 18px;
@@ -423,7 +424,7 @@ img { max-width: 100%; display: block; }
 }
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 40px -20px rgba(28,26,21,0.25);
+  box-shadow: 0 24px 40px -20px rgba(var(--ink-rgb), 0.3);
 }
 /* Dometic entry in Experience reuses the project-card look, sized down
    to one grid-column width so it doesn't dwarf the timeline below it. */
@@ -437,7 +438,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   background:
-    repeating-linear-gradient(45deg, rgba(28,26,21,0.06) 0 10px, transparent 10px 20px);
+    repeating-linear-gradient(45deg, rgba(var(--ink-rgb), 0.14) 0 10px, transparent 10px 20px);
   border-bottom: 1px solid var(--line);
 }
 .placeholder-media span {
