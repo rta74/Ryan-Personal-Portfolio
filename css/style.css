@@ -5,9 +5,10 @@
   --cream-2: #c6c5ac;
   --ink: #1b1f15;
   --ink-rgb: 27, 31, 21;
-  --ink-soft: #333c29;
+  --ink-soft: #20241a;
   --line: rgba(27, 31, 21, 0.32);
   --accent: #d95c34;
+  --accent-rgb: 217, 92, 52;
   --accent-2: #35502f;
   --radius: 18px;
   --maxw: 1200px;
@@ -206,7 +207,7 @@ img { max-width: 100%; display: block; }
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent 45%, var(--cream) 94%);
+  background: linear-gradient(to bottom, transparent 62%, var(--cream) 97%);
 }
 
 .hero-content {
@@ -419,12 +420,15 @@ img { max-width: 100%; display: block; }
   background: var(--cream-2);
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid var(--line);
-  transition: transform .35s ease, box-shadow .35s ease;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
 }
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 40px -20px rgba(var(--ink-rgb), 0.3);
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow:
+    0 30px 54px -18px rgba(var(--ink-rgb), 0.42),
+    0 0 32px -4px rgba(var(--accent-rgb), 0.55);
 }
 /* Dometic entry in Experience reuses the project-card look, sized down
    to one grid-column width so it doesn't dwarf the timeline below it. */
