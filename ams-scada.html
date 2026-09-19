@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=9" />
+<link rel="stylesheet" href="css/style.css?v=10" />
 </head>
 <body>
 
@@ -80,209 +80,99 @@
       <h2 class="section-title reveal">Inside the AMS</h2>
       <p class="section-intro reveal">Built around how maintenance actually gets planned, assigned, tracked, and reported on — plus a look at how it comes together behind the scenes in Ignition Designer.</p>
 
-      <div class="module-grid">
+      <div class="module-list">
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo">
-            <img src="assets/images/ams/ams-asset-register.png" alt="Asset Register screen listing machines and workbenches with hierarchy, manufacturer, and status" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-asset-register.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Module</span>
-                <h3>Asset Register &amp; Tagging</h3>
-                <p>The core inventory: every machine and workbench across all three buildings, structured into a three-level hierarchy — work or machining center, then parent system or child component, then the individual asset (e.g. WC_2010‑01 SPA EOL Test). Each entry carries its manufacturer, model spec, serial number, year, building, and an active / spare / decommissioned status.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image" style="background-image: url('assets/images/ams/ams-asset-register.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Module</span>
             <h3>Asset Register &amp; Tagging</h3>
             <p>The core inventory: every machine and workbench across all three buildings, structured into a three-level hierarchy — work or machining center, then parent system or child component, then the individual asset (e.g. <em>WC_2010‑01 SPA EOL Test</em>). Each entry carries its manufacturer, model spec, serial number, year, building, and an active / spare / decommissioned status. Getting here meant physically walking every bench and machine in all three buildings with Operations Manager Rob Pehl to correct names and numbers that had drifted out of date as the facility changed over the years.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo">
-            <img src="assets/images/ams/ams-maintenance-types.png" alt="Maintenance Types screen listing PM tasks with descriptions and status" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-types.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Module</span>
-                <h3>Maintenance Types</h3>
-                <p>The library of preventive maintenance tasks — "drain/clean washer tanks," "change oil filters," "audit controlled binders," and more. Each gets a unique ID, a plain-language description, an optional link to written instructions, and a status.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image" style="background-image: url('assets/images/ams/ams-maintenance-types.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Module</span>
             <h3>Maintenance Types</h3>
             <p>The library of preventive maintenance tasks pulled from years of paper logs and scattered spreadsheets — everything from "drain/clean washer tanks" and "change oil filters" to "audit controlled binders" and "check emergency equipment is accessible." Each type gets a unique ID, a plain-language description, an optional link to written instructions (PDFs for more involved procedures), and a status, so it can be attached to any number of assets on the Maintenance Schedule.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo">
-            <img src="assets/images/ams/ams-maintenance-schedule.png" alt="Maintenance Schedule screen pairing assets with maintenance type, assigned personnel, frequency, and next due date" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-schedule.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Module</span>
-                <h3>Maintenance Schedule</h3>
-                <p>Where every other module comes together. Each row pairs one asset with a maintenance type, assigned person or group, frequency, and next-due date. A script reads this table every Thursday and dispatches that week's tasks by email.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image" style="background-image: url('assets/images/ams/ams-maintenance-schedule.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Module</span>
             <h3>Maintenance Schedule</h3>
             <p>Where every other module comes together. Each schedule row pairs one asset with one maintenance type, an assigned person, group, or outsourced company, a frequency in days, and a calculated next-due date — with an option to suppress a row by another schedule ID when tasks overlap. A custom Ignition script reads this table every Thursday, generates that week's PM tasks, and emails them to the right people with a 14-day window to complete and close them out.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo">
-            <img src="assets/images/ams/ams-personnel.png" alt="Personnel screen listing maintenance staff with Ignition usernames and company emails" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-personnel.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Module</span>
-                <h3>Personnel &amp; Groups</h3>
-                <p>Everyone who can be assigned a task: employees linked to their Ignition username, personnel groups for multi-person jobs, and outsourced companies for contracted work.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image" style="background-image: url('assets/images/ams/ams-personnel.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Module</span>
             <h3>Personnel &amp; Groups</h3>
             <p>Everyone who can be assigned a task: in-house employees linked to their Ignition username and company email so a scheduled PM lands in their queue automatically, plus personnel groups for tasks that need more than one person (like the maintenance group), and a separate register of outsourced companies for work that has to be contracted out. Keeping this current, including marking people inactive when they leave, is what keeps notifications landing with the right person instead of a dead inbox.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo">
-            <img src="assets/images/ams/ams-maintenance-logs.png" alt="Maintenance Logs screen showing completed, scheduled, and cancelled PM tasks with who closed them and when" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-logs.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Module</span>
-                <h3>Maintenance Execution &amp; Logs</h3>
-                <p>Every dispatched task lands here with a due date, status, who performed and closed it, and notes — a full audit trail in place of paper sign-off sheets.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image" style="background-image: url('assets/images/ams/ams-maintenance-logs.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Module</span>
             <h3>Maintenance Execution &amp; Logs</h3>
             <p>Every dispatched task lands here as a log entry tied back to its schedule ID and asset, with a due date, status (scheduled, completed, or cancelled), who performed and who closed it, and a free-text note field for anything worth flagging — a coolant change that ran long, a task cancelled because the machine was down for other reasons, and so on. It's a full audit trail in place of the paper sign-off sheets this replaced, filterable by date range, work center, status, or assignee.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo">
-            <img src="assets/images/ams/ams-performance-ytd.png" alt="Year-to-date PM task completion chart broken out by operational group" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-performance-ytd.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Module</span>
-                <h3>Performance Monitoring</h3>
-                <p>System data rolled up into year-to-date charts by operational group and status — completed, overdue, cancelled, or scheduled — answering "are we keeping up" at a glance.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image" style="background-image: url('assets/images/ams/ams-performance-ytd.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Module</span>
             <h3>Performance Monitoring</h3>
             <p>System data exported and rolled up into year-to-date charts, broken out by operational group — B2 operations, B3 operations, external, maintenance, and maintenance cleaning — and by status: completed, overdue, cancelled, or still scheduled. It's the view that answers "are we actually keeping up," at a glance, instead of digging through the raw logs group by group.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo contain">
-            <img src="assets/images/ams/ams-monthly-report.png" alt="Monthly PM performance report email with chart, sent to the Director of Operations and maintenance leadership" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble contain" style="background-image: url('assets/images/ams/ams-monthly-report.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Module</span>
-                <h3>Monthly Reporting</h3>
-                <p>Once a month, completion data is compiled into a chart and a short email to the Director of Operations, Operations Manager, and Maintenance Manager — turning a database into something leadership actually reads.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image contain" style="background-image: url('assets/images/ams/ams-monthly-report.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Module</span>
             <h3>Monthly Reporting</h3>
             <p>Once a month, the same completion data is compiled into a chart and written up as a short email to the Director of Operations, Operations Manager, and Maintenance Manager — what got done, what's overdue, and a couple of lines of plain-language context (for example, flagging that newly-added workbench PMs are being completed efficiently, or scoping out expansion to facility assets like HVAC and electrical). It's the part of the system that turns a database into something leadership actually reads and acts on.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media placeholder-media">
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
             <span>No screenshot — done in person</span>
           </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
+          <div class="module-text">
+            <span class="project-tag">Module</span>
             <h3>Critical Documents</h3>
             <p>There's no screen to show for this one — it was in-person work, not screen work: walking every building, floor by floor, to find the binders, manuals, and reference sheets already sitting at each bench, then working out how they should be organized, filtered, and structured before any of it could be tied back to an asset in the system.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo">
-            <img src="assets/images/ams/ams-designer-home.png" alt="Ignition Designer showing the home screen being built, with the project's list of Vision windows in the project browser" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-designer-home.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Development</span>
-                <h3>Built in Ignition Designer</h3>
-                <p>Every screen in the AMS is its own Vision window inside one shared Ignition project, visible in the project browser. The home window hosts the pillar navigation and opens each editor on demand.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Development</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image" style="background-image: url('assets/images/ams/ams-designer-home.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Development</span>
             <h3>Built in Ignition Designer</h3>
             <p>Every screen in the AMS — <code>edit_asset</code>, <code>edit_maintenance_types</code>, <code>edit_maintenance_schedule</code>, <code>edit_maintenance_logs</code>, <code>edit_personnel</code>, <code>edit_personnel_groups</code>, <code>edit_outsource_company</code>, and <code>home</code> — is its own Vision window inside one shared Ignition project, visible in the project browser on the left. The home window (shown here mid-build) hosts the pillar navigation and opens each editor window on demand.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-media media-photo">
-            <img src="assets/images/ams/ams-designer-edit-asset.png" alt="Ignition Designer property editor configuring the edit_asset window's layout and behavior" loading="lazy" />
-            <div class="preview-pair" aria-hidden="true">
-              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-designer-edit-asset.png');"></div>
-              <div class="preview-text">
-                <span class="project-tag">Development</span>
-                <h3>Screen &amp; Component Configuration</h3>
-                <p>Every window's behavior — closable, resizeable, start-maximized, dock position, size constraints — is set individually in the Vision property editor, keeping all eight screens consistent.</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Development</span>
-            </div>
+        <div class="module-row reveal">
+          <div class="module-image" style="background-image: url('assets/images/ams/ams-designer-edit-asset.png');"></div>
+          <div class="module-text">
+            <span class="project-tag">Development</span>
             <h3>Screen &amp; Component Configuration</h3>
             <p>Every window's behavior is set individually in the Vision property editor — closable, maximizable, and resizeable flags, start-maximized state, cache policy, title bar text and display policy, dock position and index, and min/max size constraints. Getting these consistent across eight different windows is what makes the system feel like one cohesive application instead of eight separate tools glued together.</p>
           </div>
-        </article>
+        </div>
 
       </div>
     </div>
@@ -316,6 +206,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=9"></script>
+<script src="js/main.js?v=10"></script>
 </body>
 </html>

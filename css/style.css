@@ -464,108 +464,75 @@ code {
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
 }
-/* Module list: one merged block, each module an internal row
-   (divider between rows) instead of separate stacked cards. */
-.module-grid {
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
-  background: var(--cream-2);
-}
-.module-grid .project-card {
+/* Module list: each module is its own row of two separate "bubbles"
+   (image + text), not attached to each other or to neighboring modules. */
+.module-list {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid var(--line);
-  background: transparent;
-  transition: background .25s ease;
+  flex-direction: column;
+  gap: 2.5rem;
 }
-.module-grid .project-card:last-child {
-  border-bottom: none;
-}
-.module-grid .project-card:hover {
-  transform: none;
-  box-shadow: none;
-  background: rgba(var(--accent-rgb), 0.08);
-}
-.module-grid .project-media {
-  width: 48%;
-  flex-shrink: 0;
-  border-bottom: none;
-  border-right: 1px solid var(--line);
-}
-/* Hovering a module row pops its screenshot up split-screen style: a big
-   image bubble plus its own text bubble beside it, both centered as one
-   pair. .preview-bubble's background-image is set inline per row (a real
-   element, not a pseudo-element driven by a CSS custom property, since a
-   url() inside a custom property resolves relative to the stylesheet
-   that reads it, not the element that sets it). */
-.module-grid .preview-pair {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+.module-row {
   display: flex;
   align-items: stretch;
-  gap: 1.5rem;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(0.85);
-  transition: opacity .25s ease, transform .25s ease;
-  z-index: 200;
+  gap: 1.75rem;
 }
-.module-grid .project-card:hover .preview-pair {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-.module-grid .preview-bubble {
-  width: min(58vw, 1000px);
+.module-image {
+  width: 62%;
   aspect-ratio: 16 / 9;
   flex-shrink: 0;
   background-size: cover;
   background-position: center;
-  background-color: var(--cream);
+  background-color: var(--cream-2);
   border-radius: var(--radius);
-  border: 2px solid var(--accent);
-  box-shadow: 0 50px 90px -20px rgba(var(--ink-rgb), 0.55);
+  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
+  transition: border-color .25s ease, box-shadow .25s ease;
 }
-.module-grid .preview-bubble.contain {
+.module-image.contain {
   background-size: contain;
+  background-color: var(--cream);
 }
-.module-grid .preview-text {
-  width: min(24vw, 380px);
-  flex-shrink: 0;
+.module-image.placeholder-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.module-row:hover .module-image {
+  border-color: var(--accent);
+  box-shadow:
+    0 30px 54px -18px rgba(var(--ink-rgb), 0.42),
+    0 0 32px -4px rgba(var(--accent-rgb), 0.55);
+}
+.module-text {
+  flex: 1;
+  min-width: 0;
   background: var(--cream-2);
   border: 1.5px solid rgba(var(--accent-rgb), 0.55);
   border-radius: var(--radius);
-  box-shadow: 0 50px 90px -20px rgba(var(--ink-rgb), 0.55);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow-y: auto;
+  transition: border-color .25s ease, box-shadow .25s ease;
 }
-.module-grid .preview-text .project-tag {
+.module-row:hover .module-text {
+  border-color: var(--accent);
+  box-shadow:
+    0 30px 54px -18px rgba(var(--ink-rgb), 0.42),
+    0 0 32px -4px rgba(var(--accent-rgb), 0.55);
+}
+.module-text .project-tag {
   display: block;
   margin-bottom: .75rem;
 }
-.module-grid .preview-text h3 {
+.module-text h3 {
   font-family: var(--ff-display);
   font-size: 1.5rem;
   margin: 0 0 .75rem;
 }
-.module-grid .preview-text p {
+.module-text p {
   font-size: .95rem;
   color: var(--ink-soft);
   margin: 0;
-}
-.module-grid .project-body {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 .project-card {
   background: var(--cream-2);
@@ -845,13 +812,8 @@ a.project-card {
 
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .project-grid { grid-template-columns: 1fr; }
-  .module-grid .project-card { flex-direction: column; }
-  .module-grid .project-media {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-  }
-  .module-grid .preview-pair { display: none; }
+  .module-row { flex-direction: column; }
+  .module-image { width: 100%; }
   .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
   .timeline-item { grid-template-columns: 1fr; gap: .75rem; }
   .contact-links { grid-template-columns: 1fr; }
