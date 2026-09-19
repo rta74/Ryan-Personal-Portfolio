@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=6" />
+<link rel="stylesheet" href="css/style.css?v=7" />
 </head>
 <body>
 
@@ -47,25 +47,6 @@
 
       <div class="project-hero-media reveal">
         <img src="assets/images/ams/ams-home-pillars.webp" alt="Asset Management System home screen in Ignition, showing its six core modules" loading="lazy" />
-      </div>
-
-      <div class="stat-grid reveal">
-        <div class="stat">
-          <span class="fact-label">Facility</span>
-          <span class="fact-value">3 buildings digitized</span>
-        </div>
-        <div class="stat">
-          <span class="fact-label">PM Completion Rate</span>
-          <span class="fact-value">85%+ biweekly</span>
-        </div>
-        <div class="stat">
-          <span class="fact-label">Automation</span>
-          <span class="fact-value">Weekly dispatch, 14-day window</span>
-        </div>
-        <div class="stat">
-          <span class="fact-label">Platform</span>
-          <span class="fact-value">Ignition · SCADA · SQL</span>
-        </div>
       </div>
 
       <h2 class="section-title small reveal">Overview</h2>
@@ -110,7 +91,7 @@
               <span class="project-tag">Module</span>
             </div>
             <h3>Asset Register &amp; Tagging</h3>
-            <p>Every machine and workbench across all three buildings, tagged with a unique asset ID, hierarchy, manufacturer, model, serial number, and status — after a full physical verification sweep of the facility.</p>
+            <p>The core inventory: every machine and workbench across all three buildings, structured into a three-level hierarchy — work or machining center, then parent system or child component, then the individual asset (e.g. <em>WC_2010‑01 SPA EOL Test</em>). Each entry carries its manufacturer, model spec, serial number, year, building, and an active / spare / decommissioned status. Getting here meant physically walking every bench and machine in all three buildings with Operations Manager Rob Pehl to correct names and numbers that had drifted out of date as the facility changed over the years.</p>
           </div>
         </article>
 
@@ -123,7 +104,7 @@
               <span class="project-tag">Module</span>
             </div>
             <h3>Maintenance Types</h3>
-            <p>Every preventive maintenance task — cleanings, oil changes, inspections, filter swaps — catalogued with a unique ID, written instructions, and an active/inactive status.</p>
+            <p>The library of preventive maintenance tasks pulled from years of paper logs and scattered spreadsheets — everything from "drain/clean washer tanks" and "change oil filters" to "audit controlled binders" and "check emergency equipment is accessible." Each type gets a unique ID, a plain-language description, an optional link to written instructions (PDFs for more involved procedures), and a status, so it can be attached to any number of assets on the Maintenance Schedule.</p>
           </div>
         </article>
 
@@ -136,7 +117,7 @@
               <span class="project-tag">Module</span>
             </div>
             <h3>Maintenance Schedule</h3>
-            <p>The automated engine behind the weekly PM dispatch: each row pairs an asset with its maintenance type, assigned personnel or group, frequency, and next due date. Every Thursday the scheduler generates that week's tasks and emails them out with a 14-day completion window.</p>
+            <p>Where every other module comes together. Each schedule row pairs one asset with one maintenance type, an assigned person, group, or outsourced company, a frequency in days, and a calculated next-due date — with an option to suppress a row by another schedule ID when tasks overlap. A custom Ignition script reads this table every Thursday, generates that week's PM tasks, and emails them to the right people with a 14-day window to complete and close them out.</p>
           </div>
         </article>
 
@@ -149,7 +130,7 @@
               <span class="project-tag">Module</span>
             </div>
             <h3>Personnel &amp; Groups</h3>
-            <p>In-house maintenance staff, personnel groups, and outsourced contractors, linked to Ignition usernames and company emails so scheduled tasks route to the right person automatically.</p>
+            <p>Everyone who can be assigned a task: in-house employees linked to their Ignition username and company email so a scheduled PM lands in their queue automatically, plus personnel groups for tasks that need more than one person (like the maintenance group), and a separate register of outsourced companies for work that has to be contracted out. Keeping this current, including marking people inactive when they leave, is what keeps notifications landing with the right person instead of a dead inbox.</p>
           </div>
         </article>
 
@@ -162,7 +143,7 @@
               <span class="project-tag">Module</span>
             </div>
             <h3>Maintenance Execution &amp; Logs</h3>
-            <p>A permanent, searchable history of every task — who performed it, when it was completed or cancelled, and any notes — replacing paper sign-off sheets with a live digital record supervisors can audit at any time.</p>
+            <p>Every dispatched task lands here as a log entry tied back to its schedule ID and asset, with a due date, status (scheduled, completed, or cancelled), who performed and who closed it, and a free-text note field for anything worth flagging — a coolant change that ran long, a task cancelled because the machine was down for other reasons, and so on. It's a full audit trail in place of the paper sign-off sheets this replaced, filterable by date range, work center, status, or assignee.</p>
           </div>
         </article>
 
@@ -175,7 +156,7 @@
               <span class="project-tag">Module</span>
             </div>
             <h3>Performance Monitoring</h3>
-            <p>Exported system data rolled up into year-to-date completion charts by operational group — completed, overdue, cancelled, and scheduled — giving leadership a clear read on where maintenance is on track and where it's falling behind.</p>
+            <p>System data exported and rolled up into year-to-date charts, broken out by operational group — B2 operations, B3 operations, external, maintenance, and maintenance cleaning — and by status: completed, overdue, cancelled, or still scheduled. It's the view that answers "are we actually keeping up," at a glance, instead of digging through the raw logs group by group.</p>
           </div>
         </article>
 
@@ -188,7 +169,7 @@
               <span class="project-tag">Module</span>
             </div>
             <h3>Monthly Reporting</h3>
-            <p>Monthly PM performance summaries, compiled into charts and sent directly to the Director of Operations, Operations Manager, and Maintenance Manager — turning raw completion data into a decision-ready update each month.</p>
+            <p>Once a month, the same completion data is compiled into a chart and written up as a short email to the Director of Operations, Operations Manager, and Maintenance Manager — what got done, what's overdue, and a couple of lines of plain-language context (for example, flagging that newly-added workbench PMs are being completed efficiently, or scoping out expansion to facility assets like HVAC and electrical). It's the part of the system that turns a database into something leadership actually reads and acts on.</p>
           </div>
         </article>
 
@@ -201,20 +182,7 @@
               <span class="project-tag">Module</span>
             </div>
             <h3>Critical Documents</h3>
-            <p>There's no screen to show for this one — it was walking every building, floor by floor, to find, organize, and structure the reference documents and manuals tied to each asset.</p>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-media placeholder-media">
-            <span>+ Add photo</span>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
-            <h3>Critical Equipment</h3>
-            <p>High-priority machines flagged for closer monitoring and tighter maintenance intervals.</p>
+            <p>There's no screen to show for this one — it was in-person work, not screen work: walking every building, floor by floor, to find the binders, manuals, and reference sheets already sitting at each bench, then working out how they should be organized, filtered, and structured before any of it could be tied back to an asset in the system.</p>
           </div>
         </article>
 
@@ -227,7 +195,7 @@
               <span class="project-tag">Development</span>
             </div>
             <h3>Built in Ignition Designer</h3>
-            <p>Every screen in the AMS — asset register, maintenance types, schedule, logs, personnel, groups, outsource companies — is its own Vision window, built and wired up in Ignition Designer under one shared project.</p>
+            <p>Every screen in the AMS — <code>edit_asset</code>, <code>edit_maintenance_types</code>, <code>edit_maintenance_schedule</code>, <code>edit_maintenance_logs</code>, <code>edit_personnel</code>, <code>edit_personnel_groups</code>, <code>edit_outsource_company</code>, and <code>home</code> — is its own Vision window inside one shared Ignition project, visible in the project browser on the left. The home window (shown here mid-build) hosts the pillar navigation and opens each editor window on demand.</p>
           </div>
         </article>
 
@@ -240,7 +208,7 @@
               <span class="project-tag">Development</span>
             </div>
             <h3>Screen &amp; Component Configuration</h3>
-            <p>Each window's components, tag bindings, and behavior — sizing, dock policy, resizability — configured individually so every screen looks and works consistently across the system.</p>
+            <p>Every window's behavior is set individually in the Vision property editor — closable, maximizable, and resizeable flags, start-maximized state, cache policy, title bar text and display policy, dock position and index, and min/max size constraints. Getting these consistent across eight different windows is what makes the system feel like one cohesive application instead of eight separate tools glued together.</p>
           </div>
         </article>
 
@@ -276,6 +244,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

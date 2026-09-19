@@ -321,6 +321,13 @@ img { max-width: 100%; display: block; }
   margin: 0 0 1.25rem;
 }
 .prose:last-of-type { margin-bottom: 0; }
+code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: rgba(var(--ink-rgb), 0.08);
+  padding: 0.1em 0.4em;
+  border-radius: 5px;
+}
 .section-intro {
   max-width: 640px;
   color: var(--ink-soft);
@@ -484,7 +491,7 @@ img { max-width: 100%; display: block; }
   background: rgba(var(--accent-rgb), 0.08);
 }
 .module-grid .project-media {
-  width: 38%;
+  width: 48%;
   flex-shrink: 0;
   border-bottom: none;
   border-right: 1px solid var(--line);
