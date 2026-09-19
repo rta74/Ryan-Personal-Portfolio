@@ -488,9 +488,8 @@ code {
 }
 .module-image {
   width: 70%;
-  aspect-ratio: 1920 / 1032; /* matches the real screenshots' aspect ratio so cover-fit doesn't crop off side columns */
+  aspect-ratio: 16 / 9;
   flex-shrink: 0;
-  align-self: flex-start; /* row's align-items: stretch was overriding height, ignoring aspect-ratio */
   background-size: cover;
   background-position: center;
   background-color: var(--cream-2);
@@ -514,7 +513,7 @@ code {
   border-color: var(--accent);
 }
 .module-image:hover {
-  transform: scale(1.45);
+  transform: scale(1.7, 1.15);
   z-index: 5;
   box-shadow:
     0 50px 90px -18px rgba(var(--ink-rgb), 0.55),
