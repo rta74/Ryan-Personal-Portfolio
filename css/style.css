@@ -537,6 +537,21 @@ code {
   justify-content: flex-start;
   mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--accent-rgb), 0.55) transparent;
+}
+.module-text.height-matched::-webkit-scrollbar {
+  width: 5px;
+}
+.module-text.height-matched::-webkit-scrollbar-track {
+  background: transparent;
+}
+.module-text.height-matched::-webkit-scrollbar-thumb {
+  background: rgba(var(--accent-rgb), 0.5);
+  border-radius: 999px;
+}
+.module-text.height-matched::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--accent-rgb), 0.85);
 }
 .module-row:hover .module-text {
   border-color: var(--accent);
