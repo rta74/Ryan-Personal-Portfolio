@@ -476,6 +476,16 @@ code {
   align-items: stretch;
   gap: 1.75rem;
 }
+/* .reveal's entrance transition settles at transform: translateY(0), and
+   ANY non-"none" transform value permanently creates a stacking context —
+   which trapped the hovered image's z-index inside its own row, letting
+   later rows paint on top of it. transform: none has the same end
+   position (transitions to/from none animate via an identity matrix) but
+   doesn't create that context, so a hovered image can pop above every
+   later row instead of just within its own row. */
+.module-row.reveal.in-view {
+  transform: none;
+}
 .module-image {
   width: 62%;
   aspect-ratio: 16 / 9;
