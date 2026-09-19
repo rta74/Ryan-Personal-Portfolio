@@ -488,8 +488,9 @@ code {
 }
 .module-image {
   width: 70%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1920 / 1032; /* matches the real screenshots' aspect ratio so cover-fit doesn't crop off side columns */
   flex-shrink: 0;
+  align-self: flex-start; /* row's align-items: stretch was overriding height, ignoring aspect-ratio */
   background-size: cover;
   background-position: center;
   background-color: var(--cream-2);
