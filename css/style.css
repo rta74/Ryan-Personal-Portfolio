@@ -496,6 +496,36 @@ code {
   border-bottom: none;
   border-right: 1px solid var(--line);
 }
+/* Hovering a module row pops its screenshot up full-size in a centered
+   "bubble" so small table/chart text is actually readable. .preview-bubble
+   is a real element (its background-image set inline per row) rather than
+   a pseudo-element, since a url() inside a CSS custom property resolves
+   relative to the stylesheet that reads it, not the element that sets it. */
+.module-grid .preview-bubble {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(42vw, 720px);
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--cream);
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  box-shadow: 0 50px 90px -20px rgba(var(--ink-rgb), 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.85);
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 200;
+}
+.module-grid .preview-bubble.contain {
+  background-size: contain;
+}
+.module-grid .project-card:hover .preview-bubble {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
 .module-grid .project-body {
   flex: 1;
   min-width: 0;
