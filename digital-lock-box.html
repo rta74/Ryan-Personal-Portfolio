@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Digital Lock Box — Ryan Thomas</title>
+<meta name="description" content="An early-stage Arduino prototype for a visible lockout/tagout lock box, designed to replace a robotic work-cell's key-based safety interlock at Dometic Vancouver." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css?v=24" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">RT.</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page-header">
+    <div class="section-inner">
+      <a href="dometic-projects.html" class="btn btn-outline back-link">← Back to Dometic Projects</a>
+
+      <p class="section-label reveal">Dometic · Co-Op · Early-Stage Prototype</p>
+      <h1 class="section-title big reveal">Digital Lock Box</h1>
+      <p class="section-intro reveal">
+        A concept and early Arduino prototype for a visible lockout/tagout lock box, meant to
+        replace a key-based safety interlock on a robotic work cell with something leadership
+        could actually see from across the floor.
+      </p>
+
+      <div class="project-hero-media reveal">
+        <img src="assets/images/lock-box/lockbox-breadboard-wide.png" alt="Early Arduino breadboard prototype for the lock box, with a 3D-printed sensor bracket, on a workbench" loading="lazy" />
+      </div>
+
+      <h2 class="section-title small reveal">Overview</h2>
+      <p class="prose reveal">
+        A robotic arm works inside a caged work cell. Right now, the safety interlock runs on a
+        key: an operator hits "request to enter," the machine shuts down, and pulling a key from
+        the control panel is what keeps it locked out until that key goes back in. It works, but
+        it has two problems. Functionally, the request-to-enter logic doesn't cleanly separate
+        manual mode from the key requirement the way it should. And from a safety standpoint,
+        someone above my supervisor wants visible lockout/tagout locks instead of a key hidden
+        in a panel — something anyone walking by can see is locked. My idea was a box that holds
+        those physical locks directly and feeds their presence back to the machine's control
+        panel, so the visible lock becomes the interlock instead of a hidden key switch.
+      </p>
+      <p class="prose reveal">
+        The scope I was given was to design the electronics, the base logic, and the physical box
+        — the actual integration into the machine's control panel would be someone else's job
+        down the line. I only got as far as an early-stage proof of concept before my term ended:
+        an Arduino standing in for the eventual PLC, break-beam sensors standing in for lock
+        detection, and a breadboard prototype showing the core logic working. It's a starting
+        point for whoever picks it up next, not a finished system.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM MODULES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Design &amp; Prototype</p>
+      <h2 class="section-title reveal">From Concept to Breadboard</h2>
+      <p class="section-intro reveal">An early-stage build — the logic worked out on paper, then proven on a breadboard before any PLC or integration work began.</p>
+
+      <div class="module-list">
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>No photo — concept &amp; control logic</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Concept</span>
+            <h3>The Logic Behind the Box</h3>
+            <p>In its resting state, the box holds no locks and shows red — the cage door should stay closed. Opening the door starts with "request to enter," same as today. From there, an operator places a physical lock in the box; once the box detects it, the machine locks out completely; manual mode goes away entirely. I built in a 15–20 second window for the operator to actually place the lock before the door commits to locking, sized to hold up to four locks so more than one person can be locked out at once. When the last lock is removed, the machine stays deliberately non-functional for 20 seconds before resetting and coming back online — a buffer to let the system recalibrate and confirm the cage is actually clear.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/lock-box/lockbox-schematic.png" alt="Hand-drawn schematic showing a transmitter/receiver break-beam sensor pair wired into an Arduino, with output pins labeled" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Design</span>
+            <h3>Break-Beam Sensing, on an Arduino First</h3>
+            <p>For detecting whether a lock is physically present, break-beam sensors turned out to be the easiest early option — about $5 each through DigiKey, cheap enough to prototype freely with. I built the first version of the logic on my own Arduino rather than jumping straight to a PLC, purely to prove the concept and show the idea working before committing to industrial hardware. Each sensor pair is a transmitter and receiver feeding a digital output into the Arduino; the schematic was intentionally kept repeatable — adding a fourth lock slot is just repeating the same sensor pair on a new set of pins.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/lock-box/lockbox-breadboard-close.png" alt="Closer view of the breadboard wiring, showing the Arduino Uno with red and green LEDs standing in for lock-status indicators" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Prototype</span>
+            <h3>Standing In With LEDs</h3>
+            <p>Before there was a real box or real locks, red and green LEDs on the breadboard stood in for the status logic — red for "no lock detected," green for "locked out and safe." It's a simple substitution, but it let me test and demo the core state logic (sensor in, status out) without waiting on the box itself to exist, and made it easy to show the idea working to anyone walking by the bench.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/lock-box/lockbox-breadboard-wide.png" alt="Wide view of the breadboard prototype including the 3D-printed yellow bracket used to hold a break-beam sensor in alignment" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Prototype</span>
+            <h3>A 3D-Printed Mount for the Sensor</h3>
+            <p>Break-beam sensors only work if the transmitter and receiver stay precisely aligned, which is hard to guarantee with wires alone on an open breadboard. I designed and printed a small yellow bracket to hold one sensor at a fixed position and angle, keeping the beam consistent while I tested the logic — a stand-in for how the sensors would eventually need to be mounted inside the real box.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/lock-box/lockbox-arduino-code.png" alt="Arduino sketch reading a break-beam sensor on pin 5 and driving status outputs on pins 12 and 13" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Code</span>
+            <h3>Reading the Sensor, Driving the Output</h3>
+            <p>The sketch itself is deliberately simple: read the break-beam sensor on pin 5 through its internal pull-up, and drive pins 12 and 13 high or low depending on whether the beam is broken — the two pins standing in for the red/green status logic, with a serial print for debugging while I watched it on the bench. It's not the final control logic, just proof that a sensor reading can reliably flip an output in real time, which is the core loop the rest of the system builds on.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© <span id="year"></span> Ryan Thomas</span>
+    <span>New Westminster, BC</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=24"></script>
+</body>
+</html>
