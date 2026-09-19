@@ -457,16 +457,31 @@ img { max-width: 100%; display: block; }
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
 }
-/* Module list: one long horizontal block per row instead of a 2-up grid */
+/* Module list: one merged block, each module an internal row
+   (divider between rows) instead of separate stacked cards. */
 .module-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.75rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
+  background: var(--cream-2);
 }
 .module-grid .project-card {
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  transition: background .25s ease;
+}
+.module-grid .project-card:last-child {
+  border-bottom: none;
+}
+.module-grid .project-card:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgba(var(--accent-rgb), 0.08);
 }
 .module-grid .project-media {
   width: 38%;
