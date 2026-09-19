@@ -486,14 +486,14 @@ code {
 .module-row.reveal.in-view {
   transform: none;
 }
+/* Real <img> (not a fixed-ratio background box) so each bubble hugs its
+   own screenshot's true proportions — no cropping and no letterboxing. */
 .module-image {
   width: 70%;
-  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
   flex-shrink: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: var(--cream-2);
+  align-self: flex-start; /* row's default stretch would otherwise squash/stretch the image to fill the row height */
   border-radius: var(--radius);
   border: 1.5px solid rgba(var(--accent-rgb), 0.55);
   position: relative;
@@ -501,7 +501,9 @@ code {
   transform-origin: center;
   transition: border-color .25s ease, box-shadow .35s ease, transform .35s ease;
 }
+/* The one module with no screenshot stays a div and needs its own ratio. */
 .module-image.placeholder-media {
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
