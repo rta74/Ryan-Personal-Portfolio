@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=4" />
+<link rel="stylesheet" href="css/style.css?v=5" />
 </head>
 <body>
 
@@ -97,7 +97,7 @@
     <div class="section-inner">
       <p class="section-label reveal">System Modules</p>
       <h2 class="section-title reveal">Inside the AMS</h2>
-      <p class="section-intro reveal">The system is organized into six core modules, built around how maintenance actually gets planned, assigned, and tracked on the floor.</p>
+      <p class="section-intro reveal">The system is organized into nine core modules, built around how maintenance actually gets planned, assigned, tracked, and reported on.</p>
 
       <div class="module-grid">
 
@@ -122,8 +122,21 @@
             <div class="project-meta">
               <span class="project-tag">Module</span>
             </div>
-            <h3>Maintenance Types &amp; Scheduling</h3>
-            <p>Every preventive maintenance task — cleanings, oil changes, inspections, filter swaps — catalogued with a unique ID, instructions, and status, feeding the automated weekly scheduler.</p>
+            <h3>Maintenance Types</h3>
+            <p>Every preventive maintenance task — cleanings, oil changes, inspections, filter swaps — catalogued with a unique ID, written instructions, and an active/inactive status.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media media-photo">
+            <img src="assets/images/ams/ams-maintenance-schedule.png" alt="Maintenance Schedule screen pairing assets with maintenance type, assigned personnel, frequency, and next due date" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Maintenance Schedule</h3>
+            <p>The automated engine behind the weekly PM dispatch: each row pairs an asset with its maintenance type, assigned personnel or group, frequency, and next due date. Every Thursday the scheduler generates that week's tasks and emails them out with a 14-day completion window.</p>
           </div>
         </article>
 
@@ -137,6 +150,45 @@
             </div>
             <h3>Personnel &amp; Groups</h3>
             <p>In-house maintenance staff, personnel groups, and outsourced contractors, linked to Ignition usernames and company emails so scheduled tasks route to the right person automatically.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media media-photo">
+            <img src="assets/images/ams/ams-maintenance-logs.png" alt="Maintenance Logs screen showing completed, scheduled, and cancelled PM tasks with who closed them and when" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Maintenance Execution &amp; Logs</h3>
+            <p>A permanent, searchable history of every task — who performed it, when it was completed or cancelled, and any notes — replacing paper sign-off sheets with a live digital record supervisors can audit at any time.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media media-photo">
+            <img src="assets/images/ams/ams-performance-ytd.png" alt="Year-to-date PM task completion chart broken out by operational group" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Performance Monitoring</h3>
+            <p>Exported system data rolled up into year-to-date completion charts by operational group — completed, overdue, cancelled, and scheduled — giving leadership a clear read on where maintenance is on track and where it's falling behind.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media media-photo contain">
+            <img src="assets/images/ams/ams-monthly-report.png" alt="Monthly PM performance report email with chart, sent to the Director of Operations and maintenance leadership" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Monthly Reporting</h3>
+            <p>Monthly PM performance summaries, compiled into charts and sent directly to the Director of Operations, Operations Manager, and Maintenance Manager — turning raw completion data into a decision-ready update each month.</p>
           </div>
         </article>
 
@@ -163,32 +215,6 @@
             </div>
             <h3>Critical Equipment</h3>
             <p>High-priority machines flagged for closer monitoring and tighter maintenance intervals.</p>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-media placeholder-media">
-            <span>+ Add photo</span>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
-            <h3>Maintenance Execution &amp; Logs</h3>
-            <p>Completion history for every PM task, building a searchable digital record in place of paper sign-off sheets.</p>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-media placeholder-media">
-            <span>+ Add photo</span>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="project-tag">Module</span>
-            </div>
-            <h3>Performance Monitoring</h3>
-            <p>Monthly and year-to-date completion reports, broken out by operator, maintenance, and contractor tasks, for facility leadership.</p>
           </div>
         </article>
 
@@ -224,6 +250,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=4"></script>
+<script src="js/main.js?v=5"></script>
 </body>
 </html>

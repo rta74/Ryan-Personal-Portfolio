@@ -533,6 +533,12 @@ a.project-card {
   object-fit: cover;
   display: block;
 }
+/* For source images much taller/narrower than the 16:9 box (e.g. a
+   screenshotted email), show the whole thing instead of cropping it. */
+.media-photo.contain img {
+  object-fit: contain;
+  background: var(--cream);
+}
 
 /* Large banner image at the top of a project-detail page */
 .project-hero-media {
