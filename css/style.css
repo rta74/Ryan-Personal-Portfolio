@@ -513,7 +513,7 @@ code {
   border-color: var(--accent);
 }
 .module-image:hover {
-  transform: scale(1.7, 1.15);
+  transform: scale(1.5);
   z-index: 5;
   box-shadow:
     0 50px 90px -18px rgba(var(--ink-rgb), 0.55),
