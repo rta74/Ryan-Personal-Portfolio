@@ -496,35 +496,69 @@ code {
   border-bottom: none;
   border-right: 1px solid var(--line);
 }
-/* Hovering a module row pops its screenshot up full-size in a centered
-   "bubble" so small table/chart text is actually readable. .preview-bubble
-   is a real element (its background-image set inline per row) rather than
-   a pseudo-element, since a url() inside a CSS custom property resolves
-   relative to the stylesheet that reads it, not the element that sets it. */
-.module-grid .preview-bubble {
+/* Hovering a module row pops its screenshot up split-screen style: a big
+   image bubble plus its own text bubble beside it, both centered as one
+   pair. .preview-bubble's background-image is set inline per row (a real
+   element, not a pseudo-element driven by a CSS custom property, since a
+   url() inside a custom property resolves relative to the stylesheet
+   that reads it, not the element that sets it). */
+.module-grid .preview-pair {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: min(42vw, 720px);
-  aspect-ratio: 16 / 9;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--cream);
-  border-radius: var(--radius);
-  border: 2px solid var(--accent);
-  box-shadow: 0 50px 90px -20px rgba(var(--ink-rgb), 0.55);
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
   opacity: 0;
   pointer-events: none;
   transform: translate(-50%, -50%) scale(0.85);
   transition: opacity .25s ease, transform .25s ease;
   z-index: 200;
 }
+.module-grid .project-card:hover .preview-pair {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.module-grid .preview-bubble {
+  width: min(58vw, 1000px);
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--cream);
+  border-radius: var(--radius);
+  border: 2px solid var(--accent);
+  box-shadow: 0 50px 90px -20px rgba(var(--ink-rgb), 0.55);
+}
 .module-grid .preview-bubble.contain {
   background-size: contain;
 }
-.module-grid .project-card:hover .preview-bubble {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+.module-grid .preview-text {
+  width: min(24vw, 380px);
+  flex-shrink: 0;
+  background: var(--cream-2);
+  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
+  border-radius: var(--radius);
+  box-shadow: 0 50px 90px -20px rgba(var(--ink-rgb), 0.55);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+.module-grid .preview-text .project-tag {
+  display: block;
+  margin-bottom: .75rem;
+}
+.module-grid .preview-text h3 {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  margin: 0 0 .75rem;
+}
+.module-grid .preview-text p {
+  font-size: .95rem;
+  color: var(--ink-soft);
+  margin: 0;
 }
 .module-grid .project-body {
   flex: 1;
@@ -817,6 +851,7 @@ a.project-card {
     border-right: none;
     border-bottom: 1px solid var(--line);
   }
+  .module-grid .preview-pair { display: none; }
   .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
   .timeline-item { grid-template-columns: 1fr; gap: .75rem; }
   .contact-links { grid-template-columns: 1fr; }

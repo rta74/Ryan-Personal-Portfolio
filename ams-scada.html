@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=8" />
+<link rel="stylesheet" href="css/style.css?v=9" />
 </head>
 <body>
 
@@ -85,7 +85,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo">
             <img src="assets/images/ams/ams-asset-register.png" alt="Asset Register screen listing machines and workbenches with hierarchy, manufacturer, and status" loading="lazy" />
-            <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-asset-register.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-asset-register.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Module</span>
+                <h3>Asset Register &amp; Tagging</h3>
+                <p>The core inventory: every machine and workbench across all three buildings, structured into a three-level hierarchy — work or machining center, then parent system or child component, then the individual asset (e.g. WC_2010‑01 SPA EOL Test). Each entry carries its manufacturer, model spec, serial number, year, building, and an active / spare / decommissioned status.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -99,7 +106,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo">
             <img src="assets/images/ams/ams-maintenance-types.png" alt="Maintenance Types screen listing PM tasks with descriptions and status" loading="lazy" />
-            <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-types.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-types.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Module</span>
+                <h3>Maintenance Types</h3>
+                <p>The library of preventive maintenance tasks — "drain/clean washer tanks," "change oil filters," "audit controlled binders," and more. Each gets a unique ID, a plain-language description, an optional link to written instructions, and a status.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -113,7 +127,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo">
             <img src="assets/images/ams/ams-maintenance-schedule.png" alt="Maintenance Schedule screen pairing assets with maintenance type, assigned personnel, frequency, and next due date" loading="lazy" />
-            <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-schedule.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-schedule.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Module</span>
+                <h3>Maintenance Schedule</h3>
+                <p>Where every other module comes together. Each row pairs one asset with a maintenance type, assigned person or group, frequency, and next-due date. A script reads this table every Thursday and dispatches that week's tasks by email.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -127,7 +148,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo">
             <img src="assets/images/ams/ams-personnel.png" alt="Personnel screen listing maintenance staff with Ignition usernames and company emails" loading="lazy" />
-            <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-personnel.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-personnel.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Module</span>
+                <h3>Personnel &amp; Groups</h3>
+                <p>Everyone who can be assigned a task: employees linked to their Ignition username, personnel groups for multi-person jobs, and outsourced companies for contracted work.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -141,7 +169,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo">
             <img src="assets/images/ams/ams-maintenance-logs.png" alt="Maintenance Logs screen showing completed, scheduled, and cancelled PM tasks with who closed them and when" loading="lazy" />
-            <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-logs.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-maintenance-logs.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Module</span>
+                <h3>Maintenance Execution &amp; Logs</h3>
+                <p>Every dispatched task lands here with a due date, status, who performed and closed it, and notes — a full audit trail in place of paper sign-off sheets.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -155,7 +190,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo">
             <img src="assets/images/ams/ams-performance-ytd.png" alt="Year-to-date PM task completion chart broken out by operational group" loading="lazy" />
-            <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-performance-ytd.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-performance-ytd.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Module</span>
+                <h3>Performance Monitoring</h3>
+                <p>System data rolled up into year-to-date charts by operational group and status — completed, overdue, cancelled, or scheduled — answering "are we keeping up" at a glance.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -169,7 +211,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo contain">
             <img src="assets/images/ams/ams-monthly-report.png" alt="Monthly PM performance report email with chart, sent to the Director of Operations and maintenance leadership" loading="lazy" />
-            <div class="preview-bubble contain" style="background-image: url('assets/images/ams/ams-monthly-report.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble contain" style="background-image: url('assets/images/ams/ams-monthly-report.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Module</span>
+                <h3>Monthly Reporting</h3>
+                <p>Once a month, completion data is compiled into a chart and a short email to the Director of Operations, Operations Manager, and Maintenance Manager — turning a database into something leadership actually reads.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -196,7 +245,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo">
             <img src="assets/images/ams/ams-designer-home.png" alt="Ignition Designer showing the home screen being built, with the project's list of Vision windows in the project browser" loading="lazy" />
-            <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-designer-home.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-designer-home.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Development</span>
+                <h3>Built in Ignition Designer</h3>
+                <p>Every screen in the AMS is its own Vision window inside one shared Ignition project, visible in the project browser. The home window hosts the pillar navigation and opens each editor on demand.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -210,7 +266,14 @@
         <article class="project-card reveal">
           <div class="project-media media-photo">
             <img src="assets/images/ams/ams-designer-edit-asset.png" alt="Ignition Designer property editor configuring the edit_asset window's layout and behavior" loading="lazy" />
-            <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-designer-edit-asset.png');"></div>
+            <div class="preview-pair" aria-hidden="true">
+              <div class="preview-bubble" style="background-image: url('assets/images/ams/ams-designer-edit-asset.png');"></div>
+              <div class="preview-text">
+                <span class="project-tag">Development</span>
+                <h3>Screen &amp; Component Configuration</h3>
+                <p>Every window's behavior — closable, resizeable, start-maximized, dock position, size constraints — is set individually in the Vision property editor, keeping all eight screens consistent.</p>
+              </div>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-meta">
@@ -253,6 +316,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=8"></script>
+<script src="js/main.js?v=9"></script>
 </body>
 </html>
