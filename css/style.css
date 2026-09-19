@@ -320,6 +320,15 @@ img { max-width: 100%; display: block; }
   margin: -1.5rem 0 3rem;
 }
 
+/* Standalone project-detail pages (e.g. dometic-projects.html) */
+.project-page-header {
+  padding-top: 9rem;
+  border-top: none;
+}
+.back-link {
+  margin-bottom: 2.5rem;
+}
+
 /* ---------- About ---------- */
 .about-grid {
   display: grid;
@@ -454,11 +463,43 @@ img { max-width: 100%; display: block; }
     0 30px 54px -18px rgba(var(--ink-rgb), 0.42),
     0 0 32px -4px rgba(var(--accent-rgb), 0.55);
 }
+a.project-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
 /* Dometic entry in Experience reuses the project-card look, sized down
-   to one grid-column width so it doesn't dwarf the timeline below it. */
+   to one grid-column width so it doesn't dwarf the timeline below it.
+   It links out to a dedicated project page, with a small "click me"
+   hint sitting beside it (wraps below the card on narrow screens). */
+.experience-feature-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 0 0 3.5rem;
+}
 .experience-feature {
   max-width: 620px;
-  margin: 0 0 3.5rem;
+  width: 100%;
+}
+.click-hint {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.dometic-media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.dometic-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .placeholder-media {
   aspect-ratio: 16 / 9;
