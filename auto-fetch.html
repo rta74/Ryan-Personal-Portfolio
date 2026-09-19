@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Auto Fetch — Ryan Thomas</title>
+<meta name="description" content="A team-built automatic fetch machine for people with physical limitations to play fetch with their dogs — flywheel launch mechanism, SolidWorks design, and field testing at the dog park." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css?v=25" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">RT.</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page-header">
+    <div class="section-inner">
+      <a href="index.html#projects" class="btn btn-outline back-link">← Back to Projects</a>
+
+      <p class="section-label reveal">Mechatronics · Product Design · Jan — Apr 2023</p>
+      <h1 class="section-title big reveal">Auto Fetch</h1>
+      <p class="section-intro reveal">
+        A four-person team project to design and build an automatic fetch machine — helping
+        people who are physically limited still play fetch with their dogs. I led the circuit
+        design, calculations, assembly, and testing.
+      </p>
+
+      <div class="project-hero-media placeholder-media reveal">
+        <span>Photo coming — finished Auto Fetch prototype</span>
+      </div>
+
+      <h2 class="section-title small reveal">Overview</h2>
+      <p class="prose reveal">
+        Auto Fetch was a term-long team project — myself, Romano Almazan, Ahmed Badwy, and
+        Brendan Sng, working together as Team Gamma. The product vision was simple to state and
+        harder to build: help people with physical limitations enjoy their pet's company by
+        automating the throw, strengthening the owner-pet bond instead of replacing it. From
+        there we set real specifications — portable, well-balanced, simple enough for both owner
+        and dog to use, modular enough to upgrade later, and battery-powered on something
+        affordable and easy to replace.
+      </p>
+      <p class="prose reveal">
+        We landed on a dual flywheel launcher as our shooting mechanism: two motors spinning in
+        opposite directions on either side of a tube, pinching and launching the ball between
+        them. It was the simplest mechanism on the table and the easiest to tune, which mattered
+        because we ended up tuning it more than once — our first flywheel diameter wasn't enough
+        to hit our 20–30 ft target distance, launching the ball only 8–9 ft in early testing. The
+        fix was straightforward once we diagnosed it: reprinting larger flywheels, which fixed
+        both the distance and a centering problem the smaller wheels had been causing. I handled
+        the circuit design and power calculations behind that mechanism, then led assembly and
+        testing through to the final field test — bringing the machine to a dog park to test it
+        with real dogs, since none of us actually owned one ourselves.
+      </p>
+      <p class="prose reveal">
+        Not everything made it into the final build. A funnel that would've let a dog load the
+        ball into the machine by itself was fully modeled and print-ready, but didn't make the
+        cut once we weighed it against our remaining time and budget. The same went for
+        automation and an active safety sensor — both scoped out in detail (a sensor to lock the
+        launcher if something got within a foot of the nozzle, and logic to release the ball at
+        random intervals so the dog wouldn't fall into a predictable routine), but neither got
+        further than the concept stage before the term ran out. They're the clearest next steps
+        if the project picks back up.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM MODULES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Design &amp; Build</p>
+      <h2 class="section-title reveal">From Sketch to Dog Park</h2>
+      <p class="section-intro reveal">The full process — mechanism design, CAD and 3D printing, assembly, and testing with real dogs.</p>
+
+      <div class="module-list">
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — flywheel mechanism</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Mechanism</span>
+            <h3>A Flywheel Launcher</h3>
+            <p>We picked a dual counter-rotating flywheel as our shooting mechanism out of several options we scoped — including magnetic plates and an air-pressure launcher — because it was the easiest to understand, the easiest to adjust, and had real headroom for speed and torque. A ball dropped between the two wheels gets pinched and thrown by their rotation. The tradeoff was that the flywheel diameter directly set our launch distance, which meant our first print — undersized — only managed 8–9 ft against a 20–30 ft target. Reprinting larger flywheels fixed the distance and, as a bonus, solved a centering problem the smaller wheels had been causing.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — hand-drawn schematics</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Design</span>
+            <h3>Sketching Through the Concepts</h3>
+            <p>The design went through several full sketches before we locked in a direction: a first flywheel concept, a version with a conveyor belt to control how the ball reached the wheels, and a version with a slope and stopper mechanism instead. Each one got fully sketched out — motors, funnel, ball path, and all — before we compared them and moved on. The final schematic, drawn from both the side and front, is what we actually built from: funnel on top, flywheel tube below it, and space carved out for the battery pack and wiring.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — SolidWorks models &amp; 3D prints</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">CAD &amp; Fabrication</span>
+            <h3>Modeling and Printing Every Part</h3>
+            <p>Romano and Ahmed modeled every component in SolidWorks — the funnel, the shooting tube, the flywheels, the motor mounts and L-brackets, the insert tube, and the full assembly together — before anything got printed. 3D printing turned out to be one of our real constraints: some parts took days to print at the quality we wanted, one alone took three full days, which meant print scheduling had to be planned around well ahead of assembly rather than treated as an afterthought.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — assembled tube &amp; electronics</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Assembly</span>
+            <h3>Putting It Together</h3>
+            <p>Assembly meant fitting the printed flywheels onto their motors and couplings, mounting both into the shooting tube, and wiring the whole thing to a simple battery pack — two 8-pack battery holders, chosen because they were cheap, easy to source, and easy to swap out compared to building in a rechargeable system from the start. I led this stage along with the testing that followed, checking fit at each step (including an early test just to confirm a tennis ball actually seated correctly in the printed tube) before calling it ready for a real test.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — testing with dogs</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Testing</span>
+            <h3>Testing at the Dog Park</h3>
+            <p>None of us owned a dog, which made real-world testing one of our bigger scheduling constraints — we relied on friends and their dogs, working around their availability rather than our own. We took the finished launcher to a dog park to test it against actual dogs instead of just a tape measure, which is what caught the early flywheel distance problem in the first place. Theoretical numbers and real results didn't fully agree until we'd run it in the field.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© <span id="year"></span> Ryan Thomas</span>
+    <span>New Westminster, BC</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=25"></script>
+</body>
+</html>

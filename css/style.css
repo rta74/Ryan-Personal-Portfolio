@@ -682,6 +682,13 @@ a.project-card {
   border: 1.5px dashed var(--line);
   border-radius: 999px;
   background: var(--cream);
+  transition: color .25s ease, border-color .25s ease;
+}
+/* Placeholder image that's also a link to a project's detail page */
+a.placeholder-media:hover span {
+  color: var(--accent);
+  border-color: var(--accent);
+  border-style: solid;
 }
 .project-body { padding: 1.75rem; }
 .project-meta {
