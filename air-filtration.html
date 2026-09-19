@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Air Barrier Filtration System — Ryan Thomas</title>
+<meta name="description" content="A modular sheet-metal filtration retrofit designed in Creo for Dometic Vancouver's warehouse air barriers, eliminating oil and dust contamination through their intakes." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css?v=24" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">RT.</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page-header">
+    <div class="section-inner">
+      <a href="dometic-projects.html" class="btn btn-outline back-link">← Back to Dometic Projects</a>
+
+      <p class="section-label reveal">Dometic · Co-Op · Fall 2025 — Spring 2026</p>
+      <h1 class="section-title big reveal">Air Barrier Filtration System</h1>
+      <p class="section-intro reveal">
+        A filtration retrofit designed from scratch in Creo for Dometic's warehouse air
+        barriers — stopping airborne oil and dust from CNC machines and lathes from being
+        drawn straight into the intakes and out the other side.
+      </p>
+
+      <div class="project-hero-media reveal">
+        <img src="assets/images/air-filtration/af-installed-dock-door.webp" alt="A pair of finished air barrier filtration housings installed above a warehouse dock doorway at Dometic Vancouver" loading="lazy" />
+      </div>
+
+      <h2 class="section-title small reveal">Overview</h2>
+      <p class="prose reveal">
+        Dometic Vancouver runs air barriers across two buildings to hold climate-controlled
+        conditions in certain closed-off spaces. Near the CNC machines and lathes, the barriers'
+        intakes were pulling in airborne condensed oil and feeding it straight through the unit —
+        oil was landing on the floor below and creating slipping hazards. In the other building,
+        the same intakes were pulling in enough dust and debris to raise concerns about what was
+        being recirculated through the space. My job was to come up with a fix for both, and there
+        was no off-the-shelf part for it: I measured every air barrier individually and designed a
+        filtration housing for each one from scratch in Creo.
+      </p>
+      <p class="prose reveal">
+        The idea itself was simple — put a filter in front of the intake — but the execution
+        wasn't. Several installs had a pipe, wall, or other obstruction sitting right where a
+        housing needed to go, so each one had to be designed around its own environment rather
+        than off a single template. I also pushed to keep the design as universal as possible
+        across units, so a future replacement or maintenance job wouldn't mean re-engineering
+        the part from scratch. After a field-tested prototype revealed the first housing was
+        oversized and restricting airflow, I redesigned it around a smaller, standardized filter
+        and split it into left/right-specific housings so a filter can be swapped from one side
+        without disturbing the rest of the unit. Preliminary airflow analysis in Creo puts the
+        current design at roughly 5–8% airflow leakage while blocking the vast majority of oil
+        and dust that used to pass straight through.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM MODULES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Design &amp; Build</p>
+      <h2 class="section-title reveal">Building the Retrofit</h2>
+      <p class="section-intro reveal">From measuring around obstructions on-site to a redesigned, field-validated housing installed across the warehouse.</p>
+
+      <div class="module-list">
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/air-filtration/af-pipe-obstruction.webp" alt="Ceiling-level conduit and junction box routed around an existing pipe run at one of the air barrier intake locations" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Site Survey</span>
+            <h3>Measuring Around Real Constraints</h3>
+            <p>Before any CAD work, every air barrier got measured in person — not just its opening, but everything around it. This location is a good example of why: an existing pipe run sat right where a housing needed to mount, so the design had to route around it instead of assuming a clean, obstruction-free intake. Across two buildings and eight air barriers, almost none of the installs were identical, which meant the housing geometry had to be worked out case by case rather than stamped from one drawing.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/air-filtration/af-creo-model-full.png" alt="Dimensioned Creo model of the sheet metal filtration housing, showing overall length, width, and flange callouts" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Design</span>
+            <h3>Modular Housing in Creo</h3>
+            <p>Each housing is a custom sheet metal shroud that mounts directly over an air barrier's intake, angled and dimensioned to fit its specific install — this one built out to 1187.7 mm long with a 227.8 mm intake face. Rather than one-off every unit, I kept the design language consistent across all eight: same mounting logic, same fastener pattern, same general proportions, so the units read as one system instead of eight unrelated fabrications.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/air-filtration/af-creo-model-retention.png" alt="Close-up Creo model of the housing interior showing the filter retention lip and mounting slots" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Design</span>
+            <h3>Filter Retention &amp; Fabrication</h3>
+            <p>Inside the housing, a retention lip holds the filter media in place against airflow. The sheet metal shells were cut, bent, and welded by an outside metal shop, and I designed custom 3D-printed inserts in-house that screw into the housing to lock the filter in position — a part that would've been slow and expensive to get cut from metal, but was fast and cheap to iterate on as a print. Every dimension carried real tolerances, since a housing that was even a little off wouldn't seat cleanly against the barrier it was built for.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>No photo — field testing &amp; redesign</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Iteration</span>
+            <h3>Prototype Testing &amp; Redesign</h3>
+            <p>I installed and ran the first prototype in the field for several months. It worked — oil ingress dropped to almost nothing — but it also revealed the problem with a first design: the housing was sized around a filter that was noticeably bigger than it needed to be, roughly 10 in × 24 in against a standard-size 10 in × 23 in filter, which left extra width and hurt airflow. I redesigned the housing around a smaller, standardized 23 in × 10 in × 1 in MERV-8 pleated filter, shrank the shroud to match, and reworked the insertion mechanism into left- and right-specific housings so a filter can be pulled and replaced from one side without needing clearance on both.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/air-filtration/af-installed-dock-door.webp" alt="Two completed air barrier filtration housings installed side by side above a warehouse dock doorway" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Installed</span>
+            <h3>Building 1 — Dock Doorway</h3>
+            <p>A pair of finished units installed above one of the main dock doorways, running the full width of the opening. Getting two housings to sit flush against each other while still each mounting cleanly to their own barrier was one of the tighter fits on the project — there was very little margin to work with once both were in place.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <img class="module-image" src="assets/images/air-filtration/af-installed-corner.webp" alt="A single air barrier filtration housing installed at a building corner, angled along the intake" loading="lazy" />
+          <div class="module-text">
+            <span class="project-tag">Installed</span>
+            <h3>Building 1 — Corner Mount</h3>
+            <p>A single-unit install at a building corner, where the housing angles along the barrier rather than sitting flush to a flat wall. Corner and edge locations like this one were where the case-by-case measuring paid off most — a templated housing simply wouldn't have mounted cleanly here.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TERM REPORTS -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Full Write-Ups</p>
+      <h2 class="section-title reveal">Term Reports</h2>
+      <p class="section-intro reveal">The two technical reports I submitted to SFU covering this project in detail, alongside the SCADA Asset Management System work from the same co-op terms.</p>
+
+      <div class="contact-links reveal">
+        <a href="assets/documents/AMS-SCADA-Term-Report-1.pdf" class="contact-link" download>
+          <span class="contact-label">Fall 2025 · Term 1</span>
+          <span class="contact-value">Term Report 1</span>
+        </a>
+        <a href="assets/documents/AMS-SCADA-Term-Report-2.pdf" class="contact-link" download>
+          <span class="contact-label">Spring 2026 · Term 2</span>
+          <span class="contact-value">Term Report 2</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© <span id="year"></span> Ryan Thomas</span>
+    <span>New Westminster, BC</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=24"></script>
+</body>
+</html>
