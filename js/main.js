@@ -59,6 +59,34 @@ const revealObserver = new IntersectionObserver(
 );
 revealEls.forEach((el) => revealObserver.observe(el));
 
+// ---------- Module text bubble height pinned to its image bubble ----------
+const moduleRows = document.querySelectorAll('.module-row');
+if (moduleRows.length && 'ResizeObserver' in window) {
+  const mobileQuery = window.matchMedia('(max-width: 860px)');
+
+  moduleRows.forEach((row) => {
+    const img = row.querySelector('.module-image');
+    const text = row.querySelector('.module-text');
+    if (!img || !text) return;
+
+    const sync = () => {
+      if (mobileQuery.matches) {
+        text.style.height = '';
+        text.classList.remove('height-matched');
+        return;
+      }
+      const h = img.getBoundingClientRect().height;
+      if (h > 0) {
+        text.style.height = `${h}px`;
+        text.classList.add('height-matched');
+      }
+    };
+
+    new ResizeObserver(sync).observe(img);
+    mobileQuery.addEventListener('change', sync);
+  });
+}
+
 // ---------- Lottie hero animation, scrubbed by scroll ----------
 if (window.lottie) {
   const heroTrack = document.getElementById('hero');

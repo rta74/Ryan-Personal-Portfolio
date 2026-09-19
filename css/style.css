@@ -528,7 +528,15 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
   transition: border-color .25s ease, box-shadow .25s ease;
+}
+/* Height is pinned to the paired image via JS (see main.js) so the two
+   bubbles line up; scrolls internally if the copy runs longer than that. */
+.module-text.height-matched {
+  justify-content: flex-start;
+  mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
 }
 .module-row:hover .module-text {
   border-color: var(--accent);
