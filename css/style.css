@@ -490,7 +490,8 @@ code {
   width: 70%;
   aspect-ratio: 16 / 9;
   flex-shrink: 0;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   background-color: var(--cream-2);
   border-radius: var(--radius);
@@ -499,10 +500,6 @@ code {
   z-index: 1;
   transform-origin: center;
   transition: border-color .25s ease, box-shadow .35s ease, transform .35s ease;
-}
-.module-image.contain {
-  background-size: contain;
-  background-color: var(--cream);
 }
 .module-image.placeholder-media {
   display: flex;
