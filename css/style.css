@@ -313,6 +313,14 @@ img { max-width: 100%; display: block; }
   max-width: 780px;
 }
 .section-title.big { font-size: clamp(2.5rem, 7vw, 4.5rem); }
+.section-title.small { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1.5rem; }
+.prose {
+  max-width: 72ch;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin: 0 0 1.25rem;
+}
+.prose:last-of-type { margin-bottom: 0; }
 .section-intro {
   max-width: 640px;
   color: var(--ink-soft);
@@ -490,16 +498,48 @@ a.project-card {
   color: var(--accent);
   white-space: nowrap;
 }
-.dometic-media {
+.media-photo {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
-.dometic-media img {
+.media-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Large banner image at the top of a project-detail page */
+.project-hero-media {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
+  margin: 2rem 0 3rem;
+}
+.project-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* "By the numbers" stat strip on a project-detail page */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 0 0 3.5rem;
+}
+.stat {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--cream-2);
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
 }
 .placeholder-media {
   aspect-ratio: 16 / 9;
@@ -692,5 +732,6 @@ a.project-card {
   .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
   .timeline-item { grid-template-columns: 1fr; gap: .75rem; }
   .contact-links { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
   .section { padding: 4.5rem 0; }
 }

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Asset Management System — Ryan Thomas</title>
+<meta name="description" content="A SCADA-based Asset Management System built in Ignition at Dometic Vancouver — asset digitization, automated preventive maintenance scheduling, and reporting." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css?v=3" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">RT.</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page-header">
+    <div class="section-inner">
+      <a href="dometic-projects.html" class="btn btn-outline back-link">← Back to Dometic Projects</a>
+
+      <p class="section-label reveal">Dometic · Co-Op · Sept 2025 — April 2026</p>
+      <h1 class="section-title big reveal">Asset Management System</h1>
+      <p class="section-intro reveal">
+        A SCADA-based maintenance platform built in Ignition — replacing paper logs and
+        scattered spreadsheets with a single, automated system for tracking assets,
+        preventive maintenance, and the people responsible for it.
+      </p>
+
+      <div class="project-hero-media reveal">
+        <img src="assets/images/ams/ams-home-pillars.webp" alt="Asset Management System home screen in Ignition, showing its six core modules" loading="lazy" />
+      </div>
+
+      <div class="stat-grid reveal">
+        <div class="stat">
+          <span class="fact-label">Facility</span>
+          <span class="fact-value">3 buildings digitized</span>
+        </div>
+        <div class="stat">
+          <span class="fact-label">PM Completion Rate</span>
+          <span class="fact-value">85%+ biweekly</span>
+        </div>
+        <div class="stat">
+          <span class="fact-label">Automation</span>
+          <span class="fact-value">Weekly dispatch, 14-day window</span>
+        </div>
+        <div class="stat">
+          <span class="fact-label">Platform</span>
+          <span class="fact-value">Ignition · SCADA · SQL</span>
+        </div>
+      </div>
+
+      <h2 class="section-title small reveal">Overview</h2>
+      <p class="prose reveal">
+        Dometic Vancouver's preventive maintenance had historically lived on paper logs and
+        overlapping spreadsheets — no real-time visibility into when a machine was last
+        serviced, and no way to automatically flag overdue work. Over my Fall 2025 co-op term,
+        I helped build the data foundation for a SCADA-based Asset Management System (AMS)
+        in Ignition: running a physical verification sweep across all three buildings to correct
+        outdated names, numbers, and statuses, then organizing every machine and workbench
+        into a clear work-cell hierarchy and linking each asset to its preventive maintenance
+        (PM) tasks and frequencies.
+      </p>
+      <p class="prose reveal">
+        In Spring 2026, the focus shifted to turning that foundation into a live operational tool:
+        finalizing asset tagging, uploading and structuring the full PM dataset, and activating
+        automated weekly scheduling — every Thursday the system dispatches maintenance
+        tasks by email with a 14-day completion window, and personnel log completion directly
+        back into the system. Since going live in January, the platform has sustained a
+        preventive maintenance completion rate above 85% over rolling two-week windows, and
+        I now generate monthly performance reports for the Director of Operations and
+        maintenance leadership.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM MODULES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">System Modules</p>
+      <h2 class="section-title reveal">Inside the AMS</h2>
+      <p class="section-intro reveal">The system is organized into six core modules, built around how maintenance actually gets planned, assigned, and tracked on the floor.</p>
+
+      <div class="project-grid">
+
+        <article class="project-card reveal">
+          <div class="project-media media-photo">
+            <img src="assets/images/ams/ams-asset-register.png" alt="Asset Register screen listing machines and workbenches with hierarchy, manufacturer, and status" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Asset Register &amp; Tagging</h3>
+            <p>Every machine and workbench across all three buildings, tagged with a unique asset ID, hierarchy, manufacturer, model, serial number, and status — after a full physical verification sweep of the facility.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media media-photo">
+            <img src="assets/images/ams/ams-maintenance-types.png" alt="Maintenance Types screen listing PM tasks with descriptions and status" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Maintenance Types &amp; Scheduling</h3>
+            <p>Every preventive maintenance task — cleanings, oil changes, inspections, filter swaps — catalogued with a unique ID, instructions, and status, feeding the automated weekly scheduler.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media media-photo">
+            <img src="assets/images/ams/ams-personnel.png" alt="Personnel screen listing maintenance staff with Ignition usernames and company emails" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Personnel &amp; Groups</h3>
+            <p>In-house maintenance staff, personnel groups, and outsourced contractors, linked to Ignition usernames and company emails so scheduled tasks route to the right person automatically.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media placeholder-media">
+            <span>+ Add photo</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Critical Documents</h3>
+            <p>Reference documentation and manuals tied directly to specific assets.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media placeholder-media">
+            <span>+ Add photo</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Critical Equipment</h3>
+            <p>High-priority machines flagged for closer monitoring and tighter maintenance intervals.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media placeholder-media">
+            <span>+ Add photo</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Maintenance Execution &amp; Logs</h3>
+            <p>Completion history for every PM task, building a searchable digital record in place of paper sign-off sheets.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-media placeholder-media">
+            <span>+ Add photo</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Module</span>
+            </div>
+            <h3>Performance Monitoring</h3>
+            <p>Monthly and year-to-date completion reports, broken out by operator, maintenance, and contractor tasks, for facility leadership.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TERM REPORTS -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Full Write-Ups</p>
+      <h2 class="section-title reveal">Term Reports</h2>
+      <p class="section-intro reveal">The two technical reports I submitted to SFU covering this project in detail, from the initial data foundation to full operational deployment.</p>
+
+      <div class="contact-links reveal">
+        <a href="assets/documents/AMS-SCADA-Term-Report-1.pdf" class="contact-link" download>
+          <span class="contact-label">Fall 2025 · Term 1</span>
+          <span class="contact-value">AMS SCADA Term Report 1</span>
+        </a>
+        <a href="assets/documents/AMS-SCADA-Term-Report-2.pdf" class="contact-link" download>
+          <span class="contact-label">Spring 2026 · Term 2</span>
+          <span class="contact-value">AMS SCADA Term Report 2</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© <span id="year"></span> Ryan Thomas</span>
+    <span>New Westminster, BC</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=3"></script>
+</body>
+</html>
