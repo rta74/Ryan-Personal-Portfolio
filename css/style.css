@@ -636,8 +636,8 @@ a.project-card {
   background: var(--cream);
 }
 
-/* A project-media photo that's also a link to the project's detail page:
-   a "View Project" pill fades in over the image on hover. */
+/* A project-media photo inside a full-card link: a "View Project"
+   pill fades in over the image whenever the card itself is hovered. */
 .project-media-link {
   position: relative;
   display: block;
@@ -666,10 +666,10 @@ a.project-card {
   transform: translateY(6px);
   transition: opacity .25s ease, transform .25s ease;
 }
-.project-media-link:hover .media-overlay {
+.project-card:hover .media-overlay {
   background: rgba(var(--ink-rgb), 0.35);
 }
-.project-media-link:hover .media-overlay span {
+.project-card:hover .media-overlay span {
   opacity: 1;
   transform: translateY(0);
 }
