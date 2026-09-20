@@ -618,6 +618,18 @@ a.project-card {
   color: var(--accent);
   white-space: nowrap;
 }
+/* Same "click me" hint, sitting inside a project-card's body instead
+   of beside it — used on the Technical Projects grid cards. */
+.card-click-hint {
+  display: block;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--accent);
+}
 .media-photo {
   aspect-ratio: 16 / 9;
   overflow: hidden;
