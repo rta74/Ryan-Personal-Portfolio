@@ -45,8 +45,8 @@
         and gain-scheduled, to track a reference position under realistic actuator limits.
       </p>
 
-      <div class="project-hero-media placeholder-media reveal">
-        <span>Photo coming — Simulink model &amp; response plot</span>
+      <div class="project-hero-media contain reveal">
+        <img src="assets/images/door-control/door-saturation-model.jpeg" alt="Final Simulink model: reference steps, gain-scheduled PID with lookup tables, saturation block, and the nonlinear door subsystem" loading="lazy" />
       </div>
 
       <h2 class="section-title small reveal">Overview</h2>
@@ -90,9 +90,7 @@
       <div class="module-list">
 
         <div class="module-row reveal">
-          <div class="module-image placeholder-media">
-            <span>Photo coming — Simulink nonlinear model</span>
-          </div>
+          <img class="module-image" src="assets/images/door-control/door-nonlinear-model.jpeg" alt="Simulink block diagram of the nonlinear door model, with sum, gain, and integrator blocks generating the kx cubed spring term" loading="lazy" />
           <div class="module-text">
             <span class="project-tag">Modeling</span>
             <h3>Nonlinear Modeling &amp; Linearization</h3>
@@ -101,9 +99,7 @@
         </div>
 
         <div class="module-row reveal">
-          <div class="module-image placeholder-media">
-            <span>Photo coming — constrained PID response plot</span>
-          </div>
+          <img class="module-image" src="assets/images/door-control/door-constrained-pid.jpeg" alt="Position response of the constrained fixed-gain PID controller (Kp=800, Ki=1800, Kd=250) tracking the three-step reference signal" loading="lazy" />
           <div class="module-text">
             <span class="project-tag">Regular PID</span>
             <h3>Fixed-Gain PID Within Real Limits</h3>
@@ -112,9 +108,7 @@
         </div>
 
         <div class="module-row reveal">
-          <div class="module-image placeholder-media">
-            <span>Photo coming — gain-scheduled Simulink model &amp; response</span>
-          </div>
+          <img class="module-image" src="assets/images/door-control/door-gain-scheduled-response.jpeg" alt="Position response of the gain-scheduled PID controller closely tracking the commanded reference at each step, with minimal steady-state error" loading="lazy" />
           <div class="module-text">
             <span class="project-tag">Gain Scheduling</span>
             <h3>Switching to Gain-Scheduled Control</h3>
@@ -123,9 +117,7 @@
         </div>
 
         <div class="module-row reveal">
-          <div class="module-image placeholder-media">
-            <span>Photo coming — saturation block &amp; distorted response</span>
-          </div>
+          <img class="module-image" src="assets/images/door-control/door-saturation-response.jpeg" alt="Position response with the actuator saturation block active, showing overshoot and ringing right after the signal leaves saturation at each step" loading="lazy" />
           <div class="module-text">
             <span class="project-tag">Saturation</span>
             <h3>Testing Against a Real Actuator Limit</h3>
