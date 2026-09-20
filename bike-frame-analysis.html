@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bike Frame Analysis — Ryan Thomas</title>
+<meta name="description" content="A structural strength analysis of a bicycle frame — hand truss calculations, SolidWorks FEA, fatigue strength, and a redesign that nearly quadrupled the minimum safety factor." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css?v=26" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">RT.</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page-header">
+    <div class="section-inner">
+      <a href="index.html#projects" class="btn btn-outline back-link">← Back to Projects</a>
+
+      <p class="section-label reveal">Mechanical · Structural Engineering · Oct — Dec 2023</p>
+      <h1 class="section-title big reveal">Bike Frame Analysis</h1>
+      <p class="section-intro reveal">
+        A five-person MSE 221 team project analyzing the structural strength of a bicycle
+        frame under real riding loads — hand truss calculations, a SolidWorks FEA simulation,
+        and a redesign that nearly quadrupled the frame's minimum safety factor.
+      </p>
+
+      <div class="project-hero-media placeholder-media reveal">
+        <span>Photo coming — bike frame &amp; truss diagram</span>
+      </div>
+
+      <h2 class="section-title small reveal">Overview</h2>
+      <p class="prose reveal">
+        For our MSE 221 final project, myself, Cole Castonguay, Jihoi Jung, Simr Virk, and Isac
+        Yeung — all contributing equally — picked a real bike, the Marin Terra Linda 3 2021, and
+        put its aluminum 6061-T6 frame through a full structural analysis: is it actually strong
+        enough for how it's ridden, and if it isn't obviously overbuilt, where's the margin? We
+        started by measuring the frame to build an accurate free-body diagram, then worked the
+        problem two ways by hand — first treating the whole frame as a pin-jointed truss, then a
+        more realistic version with the top tube removed and only the seat stay and chain stay
+        treated as true truss members, everything else as beams carrying bending moments as well
+        as axial load. Both hand analyses fed into a full SolidWorks FEA simulation treating
+        every member as a beam, which is what let us actually trust the numbers.
+      </p>
+      <p class="prose reveal">
+        We also calculated the material's fatigue strength directly — aluminum 6061-T6's
+        endurance limit at 3,000 load cycles works out to about 250 MPa by the S-N formula,
+        which we cross-checked against the eFatigue tool and matched. Under the loading we
+        assumed (roughly 1600 N at the seat, 200 N at the front), the original frame held up
+        with a minimum safety factor of 2.184 at the seat stay — its most stressed member — but
+        that margin was tighter than we wanted to see on a bike's main structural bar. So we
+        proposed a modification: increasing bar diameter from 30 mm to 50 mm and wall thickness
+        from 1.5 mm to 2 mm, straight out of the stress formula (stress is force over area — more
+        area, less stress, same load). Re-running the FEA on the modified frame dropped the
+        seat stay's peak stress from roughly -1.34×10⁷ Pa to -5.92×10⁶ Pa and pushed the minimum
+        safety factor up to 8.01, for a weight increase we judged negligible on what's already a
+        cruiser-class bike — the kind of bike where a little extra mass in the tubing doesn't
+        change how it rides.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM MODULES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Analysis &amp; Redesign</p>
+      <h2 class="section-title reveal">From Hand Calcs to FEA</h2>
+      <p class="section-intro reveal">Two independent hand analyses, a fatigue check, a full SolidWorks simulation, and a redesign proven out by re-running the numbers.</p>
+
+      <div class="module-list">
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — bike &amp; free-body diagram</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Setup</span>
+            <h3>Measuring the Frame</h3>
+            <p>We started with a real bike — the Marin Terra Linda 3 2021 — and measured its frame geometry directly rather than working off a spec sheet, building it into a labeled free-body diagram with every joint (A through E) and bar length defined. That diagram, with an estimated 1600 N load at the seat and 200 N at the front, is what every calculation after it — hand or FEA — was built on top of.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — hand truss calculations</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Hand Calculations</span>
+            <h3>Two Structural Assumptions, Worked by Hand</h3>
+            <p>We solved the frame's internal forces by hand under two different assumptions. First, treating the entire frame as a pin-jointed truss — every bar takes pure axial load — and solving joint by joint for reaction forces, member forces, and stresses. Second, a more realistic combined model: the top tube removed and moments added at two joints, with only the seat stay and chain stay still treated as trusses while the rest carry bending as beams. The seat stay and chain stay came out more heavily loaded in the combined model, which made sense — with the top tube gone, more of the load had to route through those two bars instead of spreading across the frame.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — fatigue strength calculation</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Material</span>
+            <h3>Fatigue Strength of 6061-T6 Aluminum</h3>
+            <p>Static strength isn't the whole picture for a bike frame that gets loaded and unloaded thousands of times, so we calculated the fatigue (endurance) strength of the aluminum 6061-T6 frame material using the standard S-N formula at 3,000 load cycles, landing on roughly 36.2 ksi — about 250 MPa. We cross-checked that number against the eFatigue tool referenced in the project brief and got the same rounded value, which gave us confidence the frame material has real margin against fatigue failure under normal riding, not just a single worst-case load.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — SolidWorks FEA, original frame</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Simulation</span>
+            <h3>SolidWorks FEA on the Original Frame</h3>
+            <p>The hand calculations assumed pin joints or a simplified beam-truss split; the FEA simulation modeled every member as a beam and let SolidWorks solve the whole system at once. It confirmed the seat stay as the frame's riskiest member, peaking around -1.34×10⁷ Pa, with a minimum safety factor of 2.184 — safe, but the tightest margin anywhere on the frame. The FEA numbers didn't match our hand calculations exactly, which we flagged honestly in the report rather than papering over; the general pattern (seat stay and chain stay most loaded) held across every method we used, which is what actually mattered for deciding where to reinforce.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — SolidWorks FEA, modified frame</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Redesign</span>
+            <h3>Redesigning the Bars, Then Re-Testing</h3>
+            <p>Straight from the stress formula — stress equals force over area — the fix was to give the most-loaded bars more cross-sectional area: diameter up from 30 mm to 50 mm, wall thickness up from 1.5 mm to 2 mm, keeping the frame's original geometry so it would still fit and handle the same. Re-running the FEA on the modified frame dropped the seat stay's peak stress to about -5.92×10⁶ Pa and raised the minimum safety factor from 2.184 to 8.01 — roughly a 3.7× improvement — for a weight increase we judged negligible on a cruiser frame that was never chasing minimum weight in the first place.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL REPORT -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Full Write-Up</p>
+      <h2 class="section-title reveal">Final Report</h2>
+      <p class="section-intro reveal">The full MSE 221 report — fatigue strength, both sets of hand calculations, FEA results, and the proposed redesign — submitted to Prof. Gary Wang.</p>
+
+      <div class="contact-links reveal">
+        <a href="assets/documents/Bike-Frame-Analysis-Final-Report.pdf" class="contact-link" download>
+          <span class="contact-label">MSE 221 · Final Report</span>
+          <span class="contact-value">Strength Analysis of a Bicycle Frame</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© <span id="year"></span> Ryan Thomas</span>
+    <span>New Westminster, BC</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=26"></script>
+</body>
+</html>
