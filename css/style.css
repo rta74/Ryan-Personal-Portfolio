@@ -632,6 +632,44 @@ a.project-card {
   background: var(--cream);
 }
 
+/* A project-media photo that's also a link to the project's detail page:
+   a "View Project" pill fades in over the image on hover. */
+.project-media-link {
+  position: relative;
+  display: block;
+}
+.project-media-link .media-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--ink-rgb), 0);
+  transition: background .25s ease;
+}
+.project-media-link .media-overlay span {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: .85rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: .5rem 1rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  background: rgba(var(--ink-rgb), 0.55);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.project-media-link:hover .media-overlay {
+  background: rgba(var(--ink-rgb), 0.35);
+}
+.project-media-link:hover .media-overlay span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Large banner image at the top of a project-detail page */
 .project-hero-media {
   aspect-ratio: 16 / 9;
