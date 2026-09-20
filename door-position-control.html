@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gain-Scheduled Door Position Control — Ryan Thomas</title>
+<meta name="description" content="Modeling a nonlinear spring-loaded automatic door and designing fixed-gain and gain-scheduled PID controllers in Simulink to track a reference position under actuator saturation." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css?v=28" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">RT.</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page-header">
+    <div class="section-inner">
+      <a href="index.html#projects" class="btn btn-outline back-link">← Back to Projects</a>
+
+      <p class="section-label reveal">Controls · MATLAB/Simulink · Summer 2025</p>
+      <h1 class="section-title big reveal">Gain-Scheduled Door Position Control</h1>
+      <p class="section-intro reveal">
+        An MSE 381 team project with Ahmed Al-Gattan and Jessica Gong — modeling a
+        spring-loaded automatic door's nonlinear dynamics and designing PID controllers, fixed
+        and gain-scheduled, to track a reference position under realistic actuator limits.
+      </p>
+
+      <div class="project-hero-media placeholder-media reveal">
+        <span>Photo coming — Simulink model &amp; response plot</span>
+      </div>
+
+      <h2 class="section-title small reveal">Overview</h2>
+      <p class="prose reveal">
+        The brief was a spring-loaded automatic sliding door designed to close on its own if
+        power is lost — which means its spring can't be linear. As the door nears fully open
+        or fully closed, the spring force ramps up sharply, giving a cubic restoring force
+        F = kx³ instead of the usual F = kx. Combined with viscous damping and an actuator
+        force input, the full equation of motion is mx'' + cx' + kx³ = F. We built that
+        nonlinear system in Simulink from first principles — sum blocks, gain blocks, a pair of
+        integrators, and a math-function block to generate the x³ term — then linearized it
+        around three operating points (x₀ = 0, 0.5, 1 m) using a first-order Taylor expansion,
+        and confirmed the linearized model tracked the true nonlinear response closely near
+        each operating point, with the gap widening the further the door moved from that point.
+      </p>
+      <p class="prose reveal">
+        From there we designed a conventional fixed-gain PID controller, first without
+        constraints (which could track the reference almost perfectly but only with
+        unrealistically aggressive gains), then retuned within actual gain limits
+        (0 &lt; Kp ≤ 800, 0 &lt; Ki ≤ 1800, 0 &lt; Kd ≤ 250) representative of what a real
+        actuator could support — still landing within 2% steady-state error inside a 3-second
+        settling window. A single fixed-gain controller is a compromise, though: it can't be
+        equally aggressive everywhere the nonlinear spring behaves differently. So we replaced
+        it with a gain-scheduled PID — three lookup tables mapping error to Kp, Ki, and Kd
+        across operating regions — which cut steady-state error at the midpoint down to 0.624%
+        while staying inside the same gain caps. Finally, we added a ±1500 N saturation block
+        to model the actuator's real force limit, which introduced integral windup and
+        overshoot right after the signal left saturation — a real trade-off between how tightly
+        the controller can chase the reference and what the actuator can physically deliver.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM MODULES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Design &amp; Build</p>
+      <h2 class="section-title reveal">From Nonlinear Model to Gain-Scheduled Control</h2>
+      <p class="section-intro reveal">Four stages: model and linearize the door, tune a constrained fixed-gain PID, move to gain scheduling, then test both against a real actuator limit.</p>
+
+      <div class="module-list">
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — Simulink nonlinear model</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Modeling</span>
+            <h3>Nonlinear Modeling &amp; Linearization</h3>
+            <p>The door's equation of motion, mx'' + cx' + kx³ = F, was built directly in Simulink: a sum block for the net force, integrators to get from acceleration to velocity to position, and a math-function block to generate the cubic spring term from the position feedback. To make the system usable for PID design, we linearized it via a first-order Taylor expansion of the x³ term around three operating points, giving a transfer function of the form 1/(15s² + 10s + 3kx₀²) for each. Comparing the linearized and true nonlinear open-loop responses confirmed the approximation held up well near each operating point, with the nonlinear spring effect — and the gap between linear and nonlinear behavior — growing stronger the further the door moved from x₀.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — constrained PID response plot</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Regular PID</span>
+            <h3>Fixed-Gain PID Within Real Limits</h3>
+            <p>An unconstrained PID (Kp = 5000, Ki = 5450, Kd = 1250) tracked the reference signal closely but required unrealistically large gains and left the system oscillating more than we wanted. Real actuators don't support arbitrary gains, so we retuned within the constraints given for this project (Kp ≤ 800, Ki ≤ 1800, Kd ≤ 250), landing on Kp = 800, Ki = 1800, Kd = 250 through trial and error. That controller still avoided overshoot, settled within the required 3 seconds, and held steady-state error to within about 1.2–2% across the operating range — proof a fixed-gain controller can work, just as a compromise across the door's full range of motion rather than being tuned to any one part of it.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — gain-scheduled Simulink model &amp; response</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Gain Scheduling</span>
+            <h3>Switching to Gain-Scheduled Control</h3>
+            <p>To do better than a single compromise gain set, we split the PID into three lookup tables (1-D LUT blocks) mapping the error signal to region-specific Kp, Ki, and Kd values feeding a single PID block — letting the controller behave differently depending on where the door actually was, without ever exceeding the same gain limits from the fixed-gain design. The improvement was immediate: at the x₀ = 0.5 m reference, the gain-scheduled controller settled at 0.49688 m — a 0.624% error, down from the fixed-gain baseline — while keeping overshoot minimal and staying within the 3-second settling requirement across all three reference steps.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — saturation block &amp; distorted response</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Saturation</span>
+            <h3>Testing Against a Real Actuator Limit</h3>
+            <p>To check the design against real-world feasibility, we added a Simulink saturation block clamping the controller's output to ±1500 N, using the same gain-scheduled controller with no retuning. The effect was immediate and instructive: whenever the commanded force hit the limit, the loop effectively lost gain, the error couldn't be driven down as fast, and the integral term wound up — producing visible overshoot and ringing right after the signal came back out of saturation, both on the 0.5 → 1 m step and the 1 → 0 m step. The system stayed stable and still converged, but the exercise showed exactly where a real design would need anti-windup logic, a set-point filter, or a rate limit to clean up that post-saturation transient.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL REPORT -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Full Write-Up</p>
+      <h2 class="section-title reveal">Final Report</h2>
+      <p class="section-intro reveal">The full MSE 381 report — modeling, linearization, both controller designs, and the saturation analysis.</p>
+
+      <div class="contact-links reveal">
+        <a href="assets/documents/MSE381-Door-Position-Control-Final-Report.pdf" class="contact-link" download>
+          <span class="contact-label">MSE 381 · Group 3</span>
+          <span class="contact-value">Gain-Scheduled Position Control of an Automatic Door</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK -->
+  <section class="section back-nav">
+    <div class="section-inner">
+      <a href="index.html#projects" class="btn btn-outline">← Back to Projects</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© <span id="year"></span> Ryan Thomas</span>
+    <span>New Westminster, BC</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=28"></script>
+</body>
+</html>
