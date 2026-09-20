@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Characterization of Active Components — Ryan Thomas</title>
+<meta name="description" content="A four-lab ENSC 225 series characterizing op-amps, diodes, BJTs, and MOSFETs — extracting real device parameters and building amplifier, rectifier, and trigger circuits to match theory, datasheet, and simulation." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css?v=28" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">RT.</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page-header">
+    <div class="section-inner">
+      <a href="index.html#projects" class="btn btn-outline back-link">← Back to Projects</a>
+
+      <p class="section-label reveal">Electrical · Sept — Dec 2024</p>
+      <h1 class="section-title big reveal">Characterization of Active Components</h1>
+      <p class="section-intro reveal">
+        A four-lab ENSC 225 series with a consistent team — myself, Nadevni Waduge, and
+        Dawson Wakelam — characterizing op-amps, diodes, BJTs, and MOSFETs, then using what we
+        measured to design and validate real amplifier, rectifier, and trigger circuits.
+      </p>
+
+      <div class="project-hero-media placeholder-media reveal">
+        <span>Photo coming — bench setup / oscilloscope</span>
+      </div>
+
+      <h2 class="section-title small reveal">Overview</h2>
+      <p class="prose reveal">
+        Across four labs we worked through the core active components in order — operational
+        amplifiers, diodes, bipolar junction transistors, and MOSFETs — using a Source/Semiconductor
+        Parameter Analyzer, an oscilloscope, a function generator, and LTSpice to pull real
+        parameters out of real parts rather than just trusting a datasheet. Every lab followed
+        the same underlying discipline: measure the actual resistor and component values in
+        circuit (never assume the nominal value), characterize the device itself, then build a
+        circuit that depends on those numbers and check whether our measured gain, frequency
+        response, or trigger voltages actually matched the theory, the datasheet, and an LTSpice
+        simulation.
+      </p>
+      <p class="prose reveal">
+        That comparison is where most of the actual learning happened. Op-amp offset voltage and
+        bias current, diode dynamic resistance, BJT DC β and Early voltage, MOSFET threshold
+        voltage shifting with substrate bias — none of these are visible in an idealized circuit
+        diagram, but they're exactly what separates a calculated gain from a measured one. By the
+        end of the series we'd built and validated inverting/non-inverting amplifiers, a Schmitt
+        trigger and free-running oscillator, three different rectifier topologies, a
+        common-emitter BJT amplifier, and two common-source MOSFET amplifier configurations —
+        each one checked against hand calculations and simulation before we trusted the result.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM MODULES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Design &amp; Build</p>
+      <h2 class="section-title reveal">Four Labs, Four Components</h2>
+      <p class="section-intro reveal">Each lab paired device characterization with a real circuit built to test what we'd just measured.</p>
+
+      <div class="module-list">
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — op-amp circuit &amp; scope capture</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Lab 1 · Op-Amps</span>
+            <h3>Gain, Frequency Response &amp; DC Imperfections</h3>
+            <p>We built non-inverting and inverting amplifiers on a TL084 chip at gains of roughly 10 and 100, and checked the measured gain against the theoretical value calculated from the actual (not nominal) resistor values — everything landed within a few percent. Sweeping the input from 10 Hz to 3 MHz gave us Bode plots and a unity-gain frequency around 2.5–3 MHz, confirming the classic gain-bandwidth tradeoff. We then derived the chip's real DC imperfections — offset voltage, bias current, and offset current — by solving three different circuit configurations with KCL/KVL in MATLAB, landing within the TL084 datasheet's specified range. The lab closed with a Schmitt trigger and a free-running oscillator, comparing calculated, measured, and LT-Spice toggle voltages and confirming the oscillator's ~290 Hz output against its RC-derived theoretical frequency.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — diode I-V curves &amp; rectifier scope capture</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Lab 2 · Diodes</span>
+            <h3>I-V Characteristics &amp; Rectifier Circuits</h3>
+            <p>Using the parameter analyzer, we plotted forward and reverse I-V curves for a signal diode and a Zener diode, then extracted the signal diode's scale current (2.22×10⁻⁹ A) and ideality factor (0.544) from a linearized log plot. From there we measured small-signal resistance at three different forward bias currents and the Zener's own resistance and regulation voltage. The second half of the lab was rectifier design: a simple half-wave rectifier (a real 0.5 V diode drop, 0.125 ripple factor), a precision half-wave rectifier that used an op-amp to all but eliminate that drop (down to 0.04 V, with a 0.103 ripple factor), and a four-diode bridge rectifier with a filter capacitor that brought ripple down to roughly 0.7 V peak-to-peak.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — BJT amplifier &amp; scope capture</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Lab 3 · BJTs</span>
+            <h3>Transistor Characterization &amp; a Common-Emitter Amplifier</h3>
+            <p>We swept I_C vs V_CE for both an NPN (CA3046) and a PNP (2907) transistor to extract DC β and Early voltage at several bias points, then mapped the NPN's large-signal transfer curve and overlaid a load line to see where it actually sat in its operating region. From there we designed and biased a single-stage common-emitter amplifier for a 500 µA collector current, measuring gain both with and without an emitter bypass capacitor — 0.98 unbypassed versus 144× bypassed, close to the ~46 dB theoretical bypassed gain — and compared its measured frequency response against an LT-Spice simulation of the same circuit.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — MOSFET amplifier &amp; scope capture</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Lab 4 · MOSFETs</span>
+            <h3>Threshold Voltage, Transconductance &amp; a CS Amplifier</h3>
+            <p>For both n-MOS and p-MOS devices, we pulled threshold voltage and transconductance out of I_D vs V_GS sweeps at several substrate bias voltages — watching threshold voltage shift with substrate bias, the body effect in action — then pulled Early voltage and output resistance from I_D vs V_DS curves. With those parameters in hand we built two amplifier stages: a resistive-load common-source NMOS amplifier (measured gain of 2.84 against a theoretical 2.91), and a capacitively-coupled CS amplifier tested with and without a source bypass capacitor, mapping the resulting bandpass response — roughly 100 Hz to 100 kHz — and the real swing in gain and impedance the bypass capacitor produced.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LAB REPORTS -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Full Write-Ups</p>
+      <h2 class="section-title reveal">Lab Reports</h2>
+      <p class="section-intro reveal">The four full reports submitted for ENSC 225, one per component.</p>
+
+      <div class="contact-links reveal">
+        <a href="assets/documents/ENSC225-Lab1-Op-Amps.pdf" class="contact-link" download>
+          <span class="contact-label">Lab 1</span>
+          <span class="contact-value">Operational Amplifiers</span>
+        </a>
+        <a href="assets/documents/ENSC225-Lab2-Diodes.pdf" class="contact-link" download>
+          <span class="contact-label">Lab 2</span>
+          <span class="contact-value">Characterization of Diodes and Simple Diode Circuits</span>
+        </a>
+        <a href="assets/documents/ENSC225-Lab3-BJTs.pdf" class="contact-link" download>
+          <span class="contact-label">Lab 3</span>
+          <span class="contact-value">Characterization of BJTs and a Single-Stage BJT Amplifier</span>
+        </a>
+        <a href="assets/documents/ENSC225-Lab4-MOSFETs.pdf" class="contact-link" download>
+          <span class="contact-label">Lab 4</span>
+          <span class="contact-value">Characterization of MOSFETs and a MOS Amplifier</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK -->
+  <section class="section back-nav">
+    <div class="section-inner">
+      <a href="index.html#projects" class="btn btn-outline">← Back to Projects</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© <span id="year"></span> Ryan Thomas</span>
+    <span>New Westminster, BC</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=28"></script>
+</body>
+</html>
