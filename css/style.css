@@ -688,6 +688,11 @@ a.project-card {
   object-fit: cover;
   display: block;
 }
+/* For a diagram/infographic that shouldn't be cropped to 16:9 */
+.project-hero-media.contain img {
+  object-fit: contain;
+  background: var(--cream);
+}
 
 /* "By the numbers" stat strip on a project-detail page */
 .stat-grid {
