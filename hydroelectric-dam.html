@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hydroelectric Dam Design &amp; Analysis — Ryan Thomas</title>
+<meta name="description" content="A fluid mechanics analysis of a proposed small-scale hydroelectric dam on the Peace River, BC — hydrostatic force, Bernoulli flow calculations, power output, and penstock head losses." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css?v=27" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">RT.</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page-header">
+    <div class="section-inner">
+      <a href="index.html#projects" class="btn btn-outline back-link">← Back to Projects</a>
+
+      <p class="section-label reveal">Fluid Mechanics · Jan — Apr 2025</p>
+      <h1 class="section-title big reveal">Hydroelectric Dam Design &amp; Analysis</h1>
+      <p class="section-intro reveal">
+        A solo MSE 223 final project applying fluid mechanics to a proposed small-scale
+        hydroelectric dam — hydrostatic force, flow through the penstock, and how much power
+        actually reaches the grid after accounting for real-world losses.
+      </p>
+
+      <div class="project-hero-media placeholder-media reveal">
+        <span>Photo coming — dam &amp; penstock system diagram</span>
+      </div>
+
+      <h2 class="section-title small reveal">Overview</h2>
+      <p class="prose reveal">
+        The brief put me in the role of an engineer-in-training for BC Hydro, evaluating whether
+        a proposed dam on the Peace River, BC could feasibly replace diesel generation for a
+        remote community. The system was a reservoir feeding a penstock into a turbine, and my
+        job was to work through it with actual fluid mechanics — hydrostatic pressure and force
+        on the dam wall, flow velocity and pressure through the penstock via Bernoulli's
+        equation, and the real losses that separate a system's theoretical output from what it
+        can actually deliver.
+      </p>
+      <p class="prose reveal">
+        At a 30 m head, the dam wall sees roughly 300 MN of hydrostatic force, and the energy
+        balance across the whole system puts theoretical shaft power at 11.77 MW — which comes
+        down to about 10 MW of actual electrical output once a realistic 85% generator
+        efficiency is applied. The penstock flow itself is turbulent (Reynolds number around
+        25,400), which isn't a flaw so much as the reality of large-scale hydro systems, but it
+        does cost real head: friction losses through the 60 m concrete penstock work out to
+        6.69 m, cutting the usable head from 30 m down to about 23.3 m — roughly a 22% loss
+        before the water even reaches the turbine. The report closes with three
+        recommendations: reduce that friction loss with smoother penstock materials, a larger
+        diameter, and gentler bends; plan around the ecological impact (fish passage, sediment
+        management, periodic assessments); and keep the turbine and penstock on a regular
+        maintenance schedule to protect efficiency over the system's life.
+      </p>
+    </div>
+  </section>
+
+  <!-- SYSTEM MODULES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Analysis</p>
+      <h2 class="section-title reveal">From Hydrostatics to Power Output</h2>
+      <p class="section-intro reveal">A smaller, calculation-driven project — two sets of hand calculations covering the dam's structural loading and its actual power delivery.</p>
+
+      <div class="module-list">
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — hydrostatic &amp; Bernoulli calculations</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Fluid Statics</span>
+            <h3>Hydrostatic Force &amp; Penstock Flow</h3>
+            <p>The dam wall's hydrostatic force works out to about 300.43 MN, using the pressure at the wall's centroid over its submerged area — atmospheric pressure acts on both sides and cancels out, so it's the water alone doing the loading. From there, applying Bernoulli's equation along the penstock (assuming the entrance and exit are both exposed to atmospheric pressure) gives a flow velocity of roughly 12.73 m/s at the inlet, rising to about 20.18 m/s further down the drop. One result worth flagging: at one point in the system the calculated gauge pressure comes out negative, around -98 kPa — a low-pressure zone that would be worth a closer look for cavitation risk in a real design, not just a number to report.</p>
+          </div>
+        </div>
+
+        <div class="module-row reveal">
+          <div class="module-image placeholder-media">
+            <span>Photo coming — power output &amp; head loss calculations</span>
+          </div>
+          <div class="module-text">
+            <span class="project-tag">Systems &amp; Losses</span>
+            <h3>Power Output &amp; Head Losses</h3>
+            <p>An energy balance from reservoir to turbine gives a theoretical shaft power of 11.77 MW at the assumed 30 m head; applying an 85% generator efficiency brings that down to roughly 10 MW of actual electrical output. Checking the penstock flow's Reynolds number (about 25,409) confirms it's turbulent, so I pulled a friction factor off the Moody chart for rough concrete (≈0.027) and used it to calculate a real friction head loss of 6.69 m over the 60 m penstock — leaving an effective head of about 23.31 m instead of the full 30 m. It's the gap between the two that makes the case for the report's top recommendation: reducing friction loss is the single biggest lever on this system's actual efficiency.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL REPORT -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label reveal">Full Write-Up</p>
+      <h2 class="section-title reveal">Final Report</h2>
+      <p class="section-intro reveal">The full MSE 223 report — design analysis, hand calculations, conclusions, and recommendations — submitted for the course.</p>
+
+      <div class="contact-links reveal">
+        <a href="assets/documents/Hydroelectric-Dam-Final-Report.pdf" class="contact-link" download>
+          <span class="contact-label">MSE 223 · Final Project</span>
+          <span class="contact-value">Fluid Mechanics Analysis of a Hydroelectric Dam</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK -->
+  <section class="section back-nav">
+    <div class="section-inner">
+      <a href="index.html#projects" class="btn btn-outline">← Back to Projects</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© <span id="year"></span> Ryan Thomas</span>
+    <span>New Westminster, BC</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=27"></script>
+</body>
+</html>
