@@ -343,6 +343,10 @@ code {
 .back-link {
   margin-bottom: 2.5rem;
 }
+/* Matching "back to..." link repeated at the bottom of a project-detail page */
+.back-nav {
+  text-align: center;
+}
 
 /* ---------- About ---------- */
 .about-grid {
